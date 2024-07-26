@@ -10,6 +10,15 @@ export default createGlobalStyle`
     body {
         background-color: ${({ theme }) => theme.COLORS.DEEP_GRAPHITE};
         color: ${({ theme }) => theme.COLORS.WHITE};
+        font-size: 62.5%;
+
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body, input, button, textarea {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.6rem;
+        outline: none;
     }
 
     a {
