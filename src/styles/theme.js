@@ -5,6 +5,7 @@ export default {
         WHITE: "#F4EDE8",
         GRAPHITE: "#262529",
         ONYX: "#1C1B1E",
-        LAVENDER_GRAY: "#948F99"
+        LAVENDER_GRAY: "#948F99",
+        MIDNIGHT: "#312E38"
     }
 }
