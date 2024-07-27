@@ -12,7 +12,7 @@ export const Container = styled.header`
   border-bottom-color: ${({ theme }) => theme.COLORS.DEEP_GRAPHITE};
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
   padding: 0 8rem;
 `;
@@ -20,30 +20,23 @@ export const Container = styled.header`
 export const Profile = styled.div`
   display: flex;
   align-items: center;
-
-  > img {
-    width: 5.6rem;
-    height: 5.6rem;
-    border-radius: 50%;
-  }
+  width: 100%;
+  gap: 5rem;
 
   > div {
     display: flex;
-    flex-direction: column;
-    margin-right: 1.2rem;
-    line-height: 2.4rem;
 
-    span {
-      display: flex;
-      justify-content: end;
-      font-size: 1.4rem;
-      color: ${({theme}) => theme.COLORS.LAVENDER_GRAY};
+    > img {
+      width: 5.6rem;
+      height: 5.6rem;
+      border-radius: 50%;
     }
 
     strong {
-        font-size: 1.8rem;
-        color: ${({theme}) => theme.COLORS.WHITE};
+      margin-right: 1.2rem;
+      line-height: 2.4rem;
+      font-size: 1.8rem;
+      color: ${({ theme }) => theme.COLORS.WHITE};
     }
   }
 `;
-
