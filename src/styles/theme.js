@@ -6,6 +6,8 @@ export default {
         GRAPHITE: "#262529",
         ONYX: "#1C1B1E",
         LAVENDER_GRAY: "#948F99",
-        MIDNIGHT: "#312E38"
+        MIDNIGHT: "#312E38",
+        LIGHT_GRAY: "#E5E5E5",
+        DEEP_CHARCOAL: "#282124"
     }
 }
