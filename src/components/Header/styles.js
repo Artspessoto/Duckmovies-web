@@ -9,7 +9,7 @@ export const Container = styled.header`
 
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: ${({ theme }) => theme.COLORS.DEEP_GRAPHITE};
+  border-bottom-color: ${({ theme }) => theme.COLORS.LAVENDER_GRAY};
 
   display: flex;
   justify-content: space-evenly;
