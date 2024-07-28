@@ -12,6 +12,52 @@ export const Container = styled.div`
     "content";
 `;
 
+export const Main = styled.main`
+  grid-area: content;
+  overflow-y: scroll;
+  padding: 6.4rem 0;
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    background-clip: content-box;
+  }
+
+  &&::-webkit-scrollbar-thumb {
+    background: ${({theme}) => theme.COLORS.PINK};
+    border-radius: 0.8rem;
+    /* width: 10px; */
+  }
+`;
+
 export const Section = styled.section`
-  margin: 5.6rem 0 2.8rem;
+  margin: 3rem 0 2.8rem;
+`;
+
+export const Content = styled.div`
+  /* max-width: 1135px; */
+  padding: 0 8rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  > p {
+    line-height: auto;
+    font-size: 1.6rem;
+  }
+`;
+
+export const MovieHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  h1 {
+    display: flex;
+    gap: 1rem;
+  }
 `;
