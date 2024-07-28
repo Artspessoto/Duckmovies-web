@@ -29,35 +29,29 @@ export function MoviePreview() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae
             hic labore, voluptate repellat culpa vitae dolorum libero tempore
             impedit optio architecto nulla qui iusto? Facere fugit illum dolorum
-            nisi!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae
-            hic labore, voluptate repellat culpa vitae dolorum libero tempore
+            nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut,
+            beatae hic labore, voluptate repellat culpa vitae dolorum libero
+            tempore impedit optio architecto nulla qui iusto? Facere fugit illum
+            dolorum nisi! Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Ut, beatae hic labore, voluptate repellat culpa vitae dolorum
+            libero tempore impedit optio architecto nulla qui iusto? Facere
+            fugit illum dolorum nisi! Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ut, beatae hic labore, voluptate repellat culpa
+            vitae dolorum libero tempore impedit optio architecto nulla qui
+            iusto? Facere fugit illum dolorum nisi! Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Ut, beatae hic labore, voluptate
+            repellat culpa vitae dolorum libero tempore impedit optio architecto
+            nulla qui iusto? Facere fugit illum dolorum nisi! Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Ut, beatae hic labore,
+            voluptate repellat culpa vitae dolorum libero tempore impedit optio
+            architecto nulla qui iusto? Facere fugit illum dolorum nisi! Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae hic
+            labore, voluptate repellat culpa vitae dolorum libero tempore
             impedit optio architecto nulla qui iusto? Facere fugit illum dolorum
-            nisi!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae
-            hic labore, voluptate repellat culpa vitae dolorum libero tempore
-            impedit optio architecto nulla qui iusto? Facere fugit illum dolorum
-            nisi!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae
-            hic labore, voluptate repellat culpa vitae dolorum libero tempore
-            impedit optio architecto nulla qui iusto? Facere fugit illum dolorum
-            nisi!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae
-            hic labore, voluptate repellat culpa vitae dolorum libero tempore
-            impedit optio architecto nulla qui iusto? Facere fugit illum dolorum
-            nisi!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae
-            hic labore, voluptate repellat culpa vitae dolorum libero tempore
-            impedit optio architecto nulla qui iusto? Facere fugit illum dolorum
-            nisi!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae
-            hic labore, voluptate repellat culpa vitae dolorum libero tempore
-            impedit optio architecto nulla qui iusto? Facere fugit illum dolorum
-            nisi!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, beatae
-            hic labore, voluptate repellat culpa vitae dolorum libero tempore
-            impedit optio architecto nulla qui iusto? Facere fugit illum dolorum
-            nisi!
+            nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut,
+            beatae hic labore, voluptate repellat culpa vitae dolorum libero
+            tempore impedit optio architecto nulla qui iusto? Facere fugit illum
+            dolorum nisi!
           </p>
         </Content>
       </Main>
