@@ -11,3 +11,7 @@ export const Container = styled.div`
     "header"
     "content";
 `;
+
+export const Section = styled.section`
+  margin: 5.6rem 0 2.8rem;
+`;
