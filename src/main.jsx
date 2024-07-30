@@ -12,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Home />
+      {/* <MoviePreview /> */}
     </ThemeProvider>
   </React.StrictMode>
 );

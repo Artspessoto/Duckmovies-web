@@ -3,14 +3,14 @@ import { IoStarSharp } from "react-icons/io5";
 import PropTypes from "prop-types"
 import { Container } from "./styles";
 
-export function RatingMovie({ count = 5, rate = 0 }) {
+export function RatingMovie({ rate = 0, size = 30 }) {
   return (
     <Container>
-      {Array.from({ length: count }, (_, index) => (
+      {Array.from({ length: 5 }, (_, index) => (
         index < rate ? (
-          <IoStarSharp key={index} size={30}/>
+          <IoStarSharp key={index} size={size}/>
         ): (
-          <IoStarOutline key={index} size={30}/>
+          <IoStarOutline key={index} size={size}/>
         )
       ))}
     </Container>
@@ -18,8 +18,8 @@ export function RatingMovie({ count = 5, rate = 0 }) {
 }
 
 RatingMovie.propTypes = {
-    count: PropTypes.number,
-    rate: PropTypes.number
+    rate: PropTypes.number,
+    size: PropTypes.number
 }
 
 

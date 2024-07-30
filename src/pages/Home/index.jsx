@@ -1,5 +1,6 @@
 import { Container, Content, AddMovie, TitleWrapper } from "./styles";
 import { Header } from "../../components/Header";
+import { MovieNote } from "../../components/MovieNote";
 import { FiPlus } from "react-icons/fi";
 
 export function Home() {
@@ -14,6 +15,15 @@ export function Home() {
             Adicionar filme
           </AddMovie>
         </TitleWrapper>
+        <MovieNote
+          data={{
+            title: "Velocipastor",
+            tags: [
+              { id: "1", name: "Terror" },
+              { id: "2", name: "Comédia" },
+            ],
+          }}
+        />
       </Content>
     </Container>
   );
