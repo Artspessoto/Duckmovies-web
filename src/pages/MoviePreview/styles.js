@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const Main = styled.main`
   grid-area: content;
   overflow-y: scroll;
-  padding: 6.4rem 0;
+  padding: 4.4rem 0;
 
   &::-webkit-scrollbar {
     width: 0.8rem;
@@ -48,6 +48,8 @@ export const Content = styled.div`
   > p {
     line-height: auto;
     font-size: 1.6rem;
+    margin-top: 1.6rem;
+    text-align: justify;
   }
 `;
 
@@ -59,5 +61,7 @@ export const MovieHeader = styled.div`
   h1 {
     display: flex;
     gap: 1rem;
+    font-weight: 700;
+    font-size: 3.6rem;
   }
 `;
