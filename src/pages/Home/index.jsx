@@ -24,6 +24,24 @@ export function Home() {
             ],
           }}
         />
+                <MovieNote
+          data={{
+            title: "Pânico",
+            tags: [
+              { id: "1", name: "Terror" },
+              { id: "2", name: "Comédia" },
+            ],
+          }}
+        />
+                <MovieNote
+          data={{
+            title: "Fuga das galinhas",
+            tags: [
+              { id: "1", name: "Aventura" },
+              { id: "2", name: "Comédia" },
+            ],
+          }}
+        />
       </Content>
     </Container>
   );

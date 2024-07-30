@@ -3,6 +3,8 @@ import { RatingMovie } from "../RatingMovie";
 import { Category } from "../Category";
 import PropTypes from "prop-types";
 
+let bgCategory = ({theme}) => theme.COLORS.MIDNIGHT;
+
 export function MovieNote({ data, ...rest }) {
   return (
     <Container {...rest}>
@@ -15,7 +17,7 @@ export function MovieNote({ data, ...rest }) {
       data.tags && 
         <footer>
           {
-          data.tags.map((movieTag) => <Category key={movieTag.id} title={movieTag.name} />)
+          data.tags.map((movieTag) => <Category key={movieTag.id} title={movieTag.name} bgColor={bgCategory} />)
           }
         </footer>
       }
