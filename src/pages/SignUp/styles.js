@@ -3,7 +3,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
   align-items: stretch;
+  height: 100vh;
 `;
 
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > p {
+    font-size: 1.4rem;
+  }
+`;
