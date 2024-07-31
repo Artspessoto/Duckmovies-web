@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 // import { Home } from "./pages/Home";
 // import { MoviePreview } from "./pages/MoviePreview";
 // import { SignIn } from "./pages/SignIn";
-import { SignUp } from "./pages/SignUp";
+// import { SignUp } from "./pages/SignUp";
+import { Profile } from "./pages/Profile";
 import GlobalStyles from "./styles/global";
 import { ThemeProvider } from "styled-components";
 
@@ -14,7 +15,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       {/* <SignIn /> */}
-      <SignUp />
+      {/* <SignUp /> */}
+      <Profile />
       {/* <Home /> */}
       {/* <MoviePreview /> */}
     </ThemeProvider>
