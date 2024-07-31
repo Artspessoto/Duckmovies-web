@@ -15,5 +15,6 @@ export const Form = styled.form`
 
   > p {
     font-size: 1.4rem;
+    color: ${({ theme }) => theme.COLORS.SOFT_HEATHER};
   }
 `;

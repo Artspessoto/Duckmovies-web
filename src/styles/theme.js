@@ -9,6 +9,7 @@ export default {
         MIDNIGHT: "#312E38",
         LIGHT_GRAY: "#E5E5E5",
         DEEP_CHARCOAL: "#282124",
-        LIGHT_PINK: "#FF859B0D"
+        LIGHT_PINK: "#FF859B0D",
+        SOFT_HEATHER: "#CAC4CF"
     }
 }
