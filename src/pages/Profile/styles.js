@@ -8,6 +8,48 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     padding: 0 12.4rem;
+    position: relative;
+  }
+`;
+
+export const Avatar = styled.div`
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  margin: -10.4rem auto 3.2rem;
+
+  > img {
+    border-radius: 50%;
+    width: 20rem;
+    height: 20rem;
+  }
+
+  > label {
+    width: 4.8rem;
+    height: 4.8rem;
+
+    background-color: ${({ theme }) => theme.COLORS.PINK};
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 0.7rem;
+    right: 0.7rem;
+
+    cursor: pointer;
+
+    svg {
+      height: 2rem;
+      width: 2rem;
+      color: ${({ theme }) => theme.COLORS.MIDNIGHT};
+    }
+
+    input {
+      display: none;
+    }
   }
 `;
 
@@ -22,8 +64,7 @@ export const Form = styled.form`
     font-weight: 600;
   }
 
-  &:nth-child(3),
-  &:nth-child(4) {
+  > div:nth-child(3) {
     margin-top: 2rem;
   }
 `;
