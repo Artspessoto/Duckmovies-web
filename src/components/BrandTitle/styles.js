@@ -9,8 +9,8 @@ export const Container = styled.h3`
 `;
 
 export const Logo = styled.img`
-  width: ${({ logoWidth }) => logoWidth || "3.2rem"};
-  height: ${({ logoHeight }) => logoHeight || "3.2rem"};
+  width: ${({ $logoWidth }) => $logoWidth || "3.2rem"};
+  height: ${({ $logoHeight }) => $logoHeight || "3.2rem"};
   //para mudar o logo de cor, é necessário apenas trocar a cor de background e aplicar border-radius 50%
   margin-right: 0.5rem; /* Espaçamento entre o ícone e o texto */
 `;
