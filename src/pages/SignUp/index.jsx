@@ -1,4 +1,4 @@
-import { Container, Form } from "./styles";
+import { Container, Form, Background } from "./styles";
 import { BrandTitle } from "../../components/BrandTitle";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
@@ -16,7 +16,7 @@ export function SignUp() {
           $logoWidth={"5rem"}
         />
         <p>Aplicação para acompanhar tudo que assistir.</p>
-        
+
         <h2>Crie sua conta</h2>
         <Input placeholder="Nome" icon={FiUser}/>
         <Input placeholder="E-mail" icon={FiMail}/>
@@ -24,6 +24,7 @@ export function SignUp() {
         <Button title="Cadastrar"/>
         <ButtonText title="Voltar para o login" icon={FiArrowLeft} iconSize={20}/>
       </Form>
+      <Background />
     </Container>
   );
 }
