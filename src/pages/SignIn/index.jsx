@@ -1,4 +1,4 @@
-import { Container, Form } from "./styles";
+import { Container, Form, Background } from "./styles";
 import { BrandTitle } from "../../components/BrandTitle";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
@@ -23,6 +23,7 @@ export function SignIn() {
         <Button title="Entrar"/>
         <ButtonText title="Criar Conta"/>
       </Form>
+      <Background />
     </Container>
   );
 }

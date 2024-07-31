@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import backgroundImg from "../../assets/images/cineBackground.jpg";
 
 export const Container = styled.div`
   height: 100vh;
-  /* width: 100%; */
   display: flex;
   align-items: stretch;
 `;
@@ -23,5 +23,17 @@ export const Form = styled.form`
 
   > h2 {
     font-size: 2.4rem;
+    margin-top: 4.4rem;
+    margin-bottom: 4.4rem;
   }
+
+  > button:last-child {
+    margin-top: 4rem;
+  }
+`;
+
+export const Background = styled.div`
+  flex: 1;
+  background: url(${backgroundImg}) no-repeat center center;
+  background-size: cover;
 `;
