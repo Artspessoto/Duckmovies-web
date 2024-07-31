@@ -18,9 +18,9 @@ export function SignUp() {
         <p>Aplicação para acompanhar tudo que assistir.</p>
 
         <h2>Crie sua conta</h2>
-        <Input placeholder="Nome" icon={FiUser}/>
-        <Input placeholder="E-mail" icon={FiMail}/>
-        <Input placeholder="Senha" icon={FiLock}/>
+        <Input placeholder="Nome" type="text" icon={FiUser}/>
+        <Input placeholder="E-mail" type="email" icon={FiMail}/>
+        <Input placeholder="Senha" type="password" icon={FiLock}/>
         <Button title="Cadastrar"/>
         <ButtonText title="Voltar para o login" icon={FiArrowLeft} iconSize={20}/>
       </Form>
