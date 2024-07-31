@@ -2,10 +2,11 @@ import { Container, MovieTitleWrapper } from "./styles";
 import { RatingMovie } from "../RatingMovie";
 import { Category } from "../Category";
 import PropTypes from "prop-types";
-
-let bgCategory = ({theme}) => theme.COLORS.MIDNIGHT;
+import theme from "../../styles/theme";
 
 export function MovieNote({ data, ...rest }) {
+  let bgCategory = theme.COLORS.MIDNIGHT;
+
   return (
     <Container {...rest}>
       <MovieTitleWrapper>
@@ -13,14 +14,17 @@ export function MovieNote({ data, ...rest }) {
         <RatingMovie rate={4} size={15} />
       </MovieTitleWrapper>
 
-      {
-      data.tags && 
+      {data.tags && (
         <footer>
-          {
-          data.tags.map((movieTag) => <Category key={movieTag.id} title={movieTag.name} bgColor={bgCategory} />)
-          }
+          {data.tags.map((movieTag) => (
+            <Category
+              key={movieTag.id}
+              title={movieTag.name}
+              $bgColor={bgCategory}
+            />
+          ))}
         </footer>
-      }
+      )}
     </Container>
   );
 }

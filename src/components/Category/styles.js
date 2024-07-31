@@ -7,6 +7,6 @@ export const Container = styled.span`
   border-radius: 0.5rem;
   margin-right: 0.6rem;
   color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
-  background-color: ${({ theme, bgColor }) =>
-    bgColor || theme.COLORS.DEEP_CHARCOAL};
+  background-color: ${({ theme, $bgColor }) =>
+    $bgColor || theme.COLORS.DEEP_CHARCOAL};
 `;
