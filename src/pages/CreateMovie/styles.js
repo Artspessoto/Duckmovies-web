@@ -22,7 +22,7 @@ export const Container = styled.div`
 export const Main = styled.main`
   grid-area: main;
   padding: 4.4rem 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   .button-text {
     padding: 2rem 8rem;
