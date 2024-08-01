@@ -78,14 +78,15 @@ export const MovieItemsWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 
   background-color: ${({ theme }) => theme.COLORS.MIDNIGHT_BLACK};
 
-  gap: 0.5rem;
+  gap: 1rem;
   padding: 1rem;
 
   border-radius: 1rem;
-  height: 10rem;
+  min-height: 8.8rem;
 `;
 
 export const ButtonWrapper = styled.div`

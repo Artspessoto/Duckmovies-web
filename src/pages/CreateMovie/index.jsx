@@ -20,7 +20,12 @@ export function CreateMovie() {
     <Container>
       <Header />
       <Main>
-        <ButtonText className="button-text" title="Voltar" icon={FiArrowLeft} iconSize={16} />
+        <ButtonText
+          className="button-text"
+          title="Voltar"
+          icon={FiArrowLeft}
+          iconSize={16}
+        />
         <Form>
           <h1>Novo filme</h1>
 
@@ -40,6 +45,8 @@ export function CreateMovie() {
                 value="Tomate assassino ino ino ino"
                 $isNew={false}
               />
+              <MovieNoteItem value="Tomate" $isNew={false} />
+              <MovieNoteItem value="Sofá assassino" $isNew={true} />
             </MovieItemsWrapper>
           </Section>
           <ButtonWrapper>
