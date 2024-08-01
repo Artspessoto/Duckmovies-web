@@ -4,7 +4,7 @@ import { FiPlus, FiX } from "react-icons/fi";
 
 export function MovieNoteItem({ $isNew, value, onClick, ...rest }) {
   return (
-    <Container $isNew={$isNew}>
+    <Container $isNew={$isNew} size={value.length}>
       <input type="text" value={value} readOnly={!$isNew} {...rest} />
 
       <button type="button" onClick={onClick}>

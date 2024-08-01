@@ -24,7 +24,7 @@ export const Main = styled.main`
   padding: 4.4rem 0;
   overflow-y: scroll;
 
-  button {
+  button:nth-child(1) {
     padding: 2rem 8rem;
   }
 
@@ -81,7 +81,7 @@ export const MovieItemsWrapper = styled.div`
   flex-wrap: wrap;
 
   background-color: ${({ theme }) => theme.COLORS.MIDNIGHT_BLACK};
-  
+
   gap: 0.5rem;
   padding: 1rem;
 

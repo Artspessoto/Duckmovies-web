@@ -25,9 +25,9 @@ export function CreateMovie() {
           <Section>
             <h2>Marcadores</h2>
             <MovieItemsWrapper>
-              <MovieNoteItem value="Tomate assassino" $isNew={false} />
+              <MovieNoteItem value="Tomate" $isNew={false} />
               <MovieNoteItem value="Sofá assassino" $isNew={true} />
-              <MovieNoteItem value="Tomate assassino ino ino" $isNew={false} />
+              <MovieNoteItem value="Tomate assassino ino ino ino" $isNew={false} />
             </MovieItemsWrapper>
           </Section>
         </Form>
