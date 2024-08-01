@@ -8,15 +8,39 @@ export const Container = styled.div`
   grid-template-rows: 10.5rem auto;
   grid-template-areas:
     "header"
+    /* "button" */
     "main";
+
+  /* button {
+    grid-area: button;
+    display: flex;
+    align-items: center;
+    padding: 2rem 8rem;
+  } */
 `;
 
 export const Main = styled.main`
   grid-area: main;
   padding: 4.4rem 0;
+  overflow-y: scroll;
 
   button {
     padding: 2rem 8rem;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    background-clip: content-box;
+  }
+
+  &&::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.COLORS.PINK};
+    border-radius: 0.8rem;
+    /* width: 10px; */
   }
 `;
 
