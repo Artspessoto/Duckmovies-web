@@ -10,7 +10,7 @@ export function CreateMovie() {
     <Container>
       <Header />
       <Main>
-      <ButtonText title="Voltar" icon={FiArrowLeft} iconSize={"1.6rem"} />
+      <ButtonText title="Voltar" icon={FiArrowLeft} iconSize={16} />
         <Form>
           <h1>Novo filme</h1>
 
