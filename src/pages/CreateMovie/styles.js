@@ -24,7 +24,7 @@ export const Main = styled.main`
   padding: 4.4rem 0;
   overflow-y: scroll;
 
-  button:nth-child(1) {
+  .button-text {
     padding: 2rem 8rem;
   }
 
@@ -40,7 +40,6 @@ export const Main = styled.main`
   &&::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.COLORS.PINK};
     border-radius: 0.8rem;
-    /* width: 10px; */
   }
 `;
 
@@ -87,4 +86,21 @@ export const MovieItemsWrapper = styled.div`
 
   border-radius: 1rem;
   height: 10rem;
+`;
+
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;  
+
+  button:nth-child(1){
+    background-color: ${({ theme }) => theme.COLORS.MIDNIGHT_BLACK};
+    color: ${({ theme }) => theme.COLORS.PINK};
+    margin-top: 0;
+  }
+  button:nth-child(2){
+    margin-top: 0;
+  }
 `;

@@ -1,5 +1,14 @@
-import { Container, Form, Main, InputWrapper, Section, MovieItemsWrapper } from "./styles";
+import {
+  Container,
+  Form,
+  Main,
+  InputWrapper,
+  Section,
+  MovieItemsWrapper,
+  ButtonWrapper,
+} from "./styles";
 import { Header } from "../../components/Header";
+import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
 import { Textarea } from "../../components/Textarea";
@@ -11,7 +20,7 @@ export function CreateMovie() {
     <Container>
       <Header />
       <Main>
-        <ButtonText title="Voltar" icon={FiArrowLeft} iconSize={16} />
+        <ButtonText className="button-text" title="Voltar" icon={FiArrowLeft} iconSize={16} />
         <Form>
           <h1>Novo filme</h1>
 
@@ -27,9 +36,16 @@ export function CreateMovie() {
             <MovieItemsWrapper>
               <MovieNoteItem value="Tomate" $isNew={false} />
               <MovieNoteItem value="Sofá assassino" $isNew={true} />
-              <MovieNoteItem value="Tomate assassino ino ino ino" $isNew={false} />
+              <MovieNoteItem
+                value="Tomate assassino ino ino ino"
+                $isNew={false}
+              />
             </MovieItemsWrapper>
           </Section>
+          <ButtonWrapper>
+            <Button title="Excluir filme" />
+            <Button title="Salvar alterações" />
+          </ButtonWrapper>
         </Form>
       </Main>
     </Container>
