@@ -62,3 +62,15 @@ export const InputWrapper = styled.div`
   display: flex;
   gap: 4rem;
 `;
+
+export const Section = styled.section`
+  margin: 28px 0;
+
+  > h2 {
+    margin-bottom: 2.8rem;
+
+    color: ${({ theme }) => theme.COLORS.GRAY_TAUPE};
+    font-size: 2rem;
+    font-weight: 400;
+  }
+`;

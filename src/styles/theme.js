@@ -10,6 +10,7 @@ export default {
         LIGHT_GRAY: "#E5E5E5",
         DEEP_CHARCOAL: "#282124",
         LIGHT_PINK: "#FF859B0D",
-        SOFT_HEATHER: "#CAC4CF"
+        SOFT_HEATHER: "#CAC4CF",
+        GRAY_TAUPE: "#999591"
     }
 }
