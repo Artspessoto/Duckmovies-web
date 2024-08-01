@@ -64,7 +64,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const Section = styled.section`
-  margin: 28px 0;
+  margin: 2.8rem 0;
 
   > h2 {
     margin-bottom: 2.8rem;
@@ -73,4 +73,18 @@ export const Section = styled.section`
     font-size: 2rem;
     font-weight: 400;
   }
+`;
+
+export const MovieItemsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  background-color: ${({ theme }) => theme.COLORS.MIDNIGHT_BLACK};
+  
+  gap: 0.5rem;
+  padding: 1rem;
+
+  border-radius: 1rem;
+  height: 10rem;
 `;

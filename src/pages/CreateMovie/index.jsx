@@ -1,4 +1,4 @@
-import { Container, Form, Main, InputWrapper, Section } from "./styles";
+import { Container, Form, Main, InputWrapper, Section, MovieItemsWrapper } from "./styles";
 import { Header } from "../../components/Header";
 import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
@@ -24,8 +24,11 @@ export function CreateMovie() {
 
           <Section>
             <h2>Marcadores</h2>
-            <MovieNoteItem value="Tomate assassino" $isNew={false}/>
-            <MovieNoteItem value="Sofá assassino" $isNew={true}/>
+            <MovieItemsWrapper>
+              <MovieNoteItem value="Tomate assassino" $isNew={false} />
+              <MovieNoteItem value="Sofá assassino" $isNew={true} />
+              <MovieNoteItem value="Tomate assassino ino ino" $isNew={false} />
+            </MovieItemsWrapper>
           </Section>
         </Form>
       </Main>
