@@ -18,6 +18,7 @@ export const Container = styled.div`
   > button {
     border: none;
     background: none;
+    color: ${({ theme }) => theme.COLORS.PINK};
   }
 
   > input {
@@ -25,12 +26,12 @@ export const Container = styled.div`
     width: 100%;
 
     padding: 1.2rem;
-    color: ${({theme}) => theme.COLORS.WHITE};
+    color: ${({ theme }) => theme.COLORS.WHITE};
     background: transparent;
     border: none;
-    
+
     &::placeholder {
-        color: ${({theme}) => theme.COLORS.LAVENDER_GRAY};
+      color: ${({ theme }) => theme.COLORS.LAVENDER_GRAY};
     }
   }
 `;

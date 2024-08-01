@@ -11,6 +11,7 @@ export default {
         DEEP_CHARCOAL: "#282124",
         LIGHT_PINK: "#FF859B0D",
         SOFT_HEATHER: "#CAC4CF",
-        GRAY_TAUPE: "#999591"
+        GRAY_TAUPE: "#999591",
+        MIDNIGHT_BLACK: "#0D0C0F"
     }
 }
