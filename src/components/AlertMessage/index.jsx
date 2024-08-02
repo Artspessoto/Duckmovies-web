@@ -5,12 +5,14 @@ import { Container } from "./styles";
 import Stack from "@mui/material/Stack";
 import theme from "../../styles/theme";
 import { getAlertStyles } from "../../utils/getAlertStyles";
+import { useAlerts } from "../../context/AlertContext";
 
-export function AlertMessage({ messages = [] }) {
+export function AlertMessage() {
+  const { alerts } = useAlerts();
   const [show, setShow] = useState(true);
 
   useEffect(() => {
-    if (messages.length > 0) {
+    if (alerts.length > 0) {
       setShow(true);
       const timer = setTimeout(() => {
         setShow(false);
@@ -18,7 +20,7 @@ export function AlertMessage({ messages = [] }) {
 
       return () => clearTimeout(timer);
     }
-  }, [messages]);
+  }, [alerts]);
 
   if (!show) {
     return null;
@@ -27,7 +29,7 @@ export function AlertMessage({ messages = [] }) {
   return (
     <Container className={`alert-container ${!show ? 'fade-out' : 'fade-in'}`}>
       <Stack sx={{ width: "100%" }} spacing={2}>
-        {messages.map((msg, index) => (
+        {alerts.map((msg, index) => (
           <Alert
             key={index}
             severity={msg.severity}
