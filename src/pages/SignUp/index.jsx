@@ -6,6 +6,7 @@ import { BrandTitle } from "../../components/BrandTitle";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
+import { AlertMessage } from "../../components/AlertMessage";
 
 import { Container, Form, Background } from "./styles";
 
@@ -13,10 +14,17 @@ export function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alerts, setAlerts] = useState([]);
 
-  function handleSignUp(){
-    if(!name || !email || !password){
-      return console.log("preencher os campos");
+  function handleSignUp() {
+    if (!name || !email || !password) {
+      setAlerts([
+        {
+          severity: "error",
+          text: "Preencha os campos obrigatórios",
+        },
+      ]);
+      return;
     }
   }
 
@@ -32,11 +40,12 @@ export function SignUp() {
         <p>Aplicação para acompanhar tudo que assistir.</p>
 
         <h2>Crie sua conta</h2>
+        {alerts.length > 0 && <AlertMessage messages={alerts} />}
         <Input
           placeholder="Nome"
           type="text"
           icon={FiUser}
-          vale={name}
+          value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <Input
@@ -54,7 +63,7 @@ export function SignUp() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button title="Cadastrar" onClick={handleSignUp()} />
+        <Button title="Cadastrar" onClick={handleSignUp} />
         <Link to="/">
           <ButtonText
             title="Voltar para o login"
