@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Container, Section, Content, MovieHeader, Main } from "./styles";
 import { Header } from "../../components/Header";
 import { Category } from "../../components/Category";
@@ -12,7 +13,9 @@ export function MoviePreview() {
       <Main>
         <Content>
           <MovieHeader>
-            <ButtonText title="Voltar" icon={FiArrowLeft} />
+            <Link to="/">
+              <ButtonText title="Voltar" icon={FiArrowLeft} />
+            </Link>
             <h1>
               Hereditário
               <RatingMovie rate={3} />

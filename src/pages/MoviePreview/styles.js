@@ -29,7 +29,6 @@ export const Main = styled.main`
   &&::-webkit-scrollbar-thumb {
     background: ${({theme}) => theme.COLORS.PINK};
     border-radius: 0.8rem;
-    /* width: 10px; */
   }
 `;
 
@@ -38,7 +37,6 @@ export const Section = styled.section`
 `;
 
 export const Content = styled.div`
-  /* max-width: 1135px; */
   padding: 0 8rem;
   margin: 0 auto;
 

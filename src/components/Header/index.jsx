@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Container, Profile } from "./styles";
 import { BrandTitle } from "../BrandTitle";
 import { Input } from "../Input";
@@ -6,12 +7,14 @@ export function Header() {
   return (
     <Container>
       <Profile>
-        <BrandTitle
-          title="Duckmovies"
-          fontSize="2.4rem"
-          logoHeight="4rem"
-          logoWidth="4rem"
-        />
+        <Link to="/">
+          <BrandTitle
+            title="Duckmovies"
+            fontSize="2.4rem"
+            logoHeight="4rem"
+            logoWidth="4rem"
+          />
+        </Link>
         <Input placeholder="Pesquisar pelo título" />
         <div>
           <strong>Arthur Martins</strong>

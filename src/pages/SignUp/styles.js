@@ -28,7 +28,7 @@ export const Form = styled.form`
     margin-bottom: 4.4rem;
   }
 
-  > button:last-child {
+  > a {
     margin-top: 4rem;
   }
 `;

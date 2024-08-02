@@ -9,7 +9,7 @@ export function Home() {
       <Header />
         <TitleWrapper>
           <h1>Meus filmes</h1>
-          <AddMovie>
+          <AddMovie to="/create-movie">
             <FiPlus />
             Adicionar filme
           </AddMovie>

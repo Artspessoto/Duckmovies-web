@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Container, Form, Avatar } from "./styles";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
@@ -8,7 +9,9 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <ButtonText title="Voltar" icon={FiArrowLeft} />
+        <Link to="/">
+          <ButtonText title="Voltar" icon={FiArrowLeft} />
+        </Link>
       </header>
 
       <Avatar>
@@ -18,7 +21,7 @@ export function Profile() {
           <input type="file" id="avatar" />
         </label>
       </Avatar>
-      
+
       <Form>
         <Input placeholder="Nome" type="text" icon={FiUser} />
         <Input placeholder="E-mail" type="email" icon={FiMail} />

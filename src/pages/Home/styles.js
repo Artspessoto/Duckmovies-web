@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   height: 100vh;
@@ -30,7 +31,7 @@ export const TitleWrapper = styled.div`
   }
 `;
 
-export const AddMovie = styled.button`
+export const AddMovie = styled(Link)`
   align-items: center;
   display: flex;
   justify-content: center;

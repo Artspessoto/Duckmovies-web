@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Container,
   Form,
@@ -20,12 +21,15 @@ export function CreateMovie() {
     <Container>
       <Header />
       <Main>
-        <ButtonText
-          className="button-text"
-          title="Voltar"
-          icon={FiArrowLeft}
-          iconSize={16}
-        />
+        <Link to="/">
+          <ButtonText
+            className="button-text"
+            title="Voltar"
+            icon={FiArrowLeft}
+            iconSize={16}
+          />
+        </Link>
+
         <Form>
           <h1>Novo filme</h1>
 
