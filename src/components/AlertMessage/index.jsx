@@ -16,8 +16,10 @@ export function AlertMessage({ messages = [] }) {
             severity={msg.severity}
             variant="outlined"
             sx={{
-              color: `${color}`,
-              fontSize: '1.2rem'
+              fontSize: "1.3rem",
+              color: { color }, 
+              fontFamily: `Poppins, sans-serif`,
+              fontWeight: 500
             }}
           >
             {msg.text}
@@ -37,4 +39,3 @@ AlertMessage.propTypes = {
     }).isRequired
   ).isRequired,
 };
-
