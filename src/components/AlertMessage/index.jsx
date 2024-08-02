@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
-// import PropTypes from "prop-types";
 import { Container } from "./styles";
 import Stack from "@mui/material/Stack";
 import theme from "../../styles/theme";
 import { getAlertStyles } from "../../utils/getAlertStyles";
-import { useAlerts } from "../../context/AlertContext";
+import { useAlerts } from "../../context/useAlerts";
 
 export function AlertMessage() {
   const { alerts, cleanAlerts } = useAlerts();
   const [show, setShow] = useState(true);
-  console.log("TESte",alerts);
+  console.log("TESte", alerts, cleanAlerts);
 
   useEffect(() => {
     if (alerts.length > 0) {
@@ -29,7 +28,7 @@ export function AlertMessage() {
   }
 
   return (
-    <Container className={`alert-container ${!show ? 'fade-out' : 'fade-in'}`}>
+    <Container className={`alert-container ${!show ? "fade-out" : "fade-in"}`}>
       <Stack sx={{ width: "100%" }} spacing={2}>
         {alerts.map((msg, index) => (
           <Alert

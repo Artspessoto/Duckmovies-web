@@ -1,7 +1,7 @@
-import { useContext, createContext, useState } from "react";
+import { createContext, useState } from "react";
 import PropTypes from "prop-types";
 
-const AlertContext = createContext();
+export const AlertContext = createContext();
 
 export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
@@ -25,6 +25,3 @@ AlertProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export function useAlerts() {
-  return useContext(AlertContext);
-}
