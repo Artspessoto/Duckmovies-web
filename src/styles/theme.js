@@ -19,6 +19,6 @@ export default {
     DEEP_PLUM: "#2A1A1D",
     DEEP_AMBER: "#F57C00",
     DEEP_FOREST_GREEN: "#004D00",
-    DEEP_MIDNIGHT_BLUE: "003366",
+    DEEP_MIDNIGHT_BLUE: "#003366",
   },
 };
