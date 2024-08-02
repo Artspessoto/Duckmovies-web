@@ -6,24 +6,20 @@ import { BrandTitle } from "../../components/BrandTitle";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
-import { AlertMessage } from "../../components/AlertMessage";
+import { useAlerts } from "../../context/AlertContext";
 
-import { Container, Form, Background } from "./styles";
+import { Container, Form, Background } from "./styles"; 
 
 export function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [alerts, setAlerts] = useState([]);
+
+  const { addAlert } = useAlerts(); 
 
   function handleSignUp() {
     if (!name || !email || !password) {
-      setAlerts([
-        {
-          severity: "error",
-          text: "Preencha os campos obrigatórios",
-        },
-      ]);
+      addAlert("error", "Preencha os campos obrigatórios");
       return;
     }
   }
@@ -40,7 +36,6 @@ export function SignUp() {
         <p>Aplicação para acompanhar tudo que assistir.</p>
 
         <h2>Crie sua conta</h2>
-        {alerts.length > 0 && <AlertMessage messages={alerts} />}
         <Input
           placeholder="Nome"
           type="text"

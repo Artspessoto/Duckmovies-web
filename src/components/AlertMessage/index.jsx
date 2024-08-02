@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { Container } from "./styles";
 import Stack from "@mui/material/Stack";
 import theme from "../../styles/theme";
@@ -8,19 +8,21 @@ import { getAlertStyles } from "../../utils/getAlertStyles";
 import { useAlerts } from "../../context/AlertContext";
 
 export function AlertMessage() {
-  const { alerts } = useAlerts();
+  const { alerts, cleanAlerts } = useAlerts();
   const [show, setShow] = useState(true);
+  console.log("TESte",alerts);
 
   useEffect(() => {
     if (alerts.length > 0) {
       setShow(true);
       const timer = setTimeout(() => {
         setShow(false);
+        cleanAlerts();
       }, 2000);
 
       return () => clearTimeout(timer);
     }
-  }, [alerts]);
+  }, [alerts, cleanAlerts]);
 
   if (!show) {
     return null;
@@ -49,13 +51,3 @@ export function AlertMessage() {
     </Container>
   );
 }
-
-AlertMessage.propTypes = {
-  messages: PropTypes.arrayOf(
-    PropTypes.shape({
-      severity: PropTypes.oneOf(["success", "info", "warning", "error"])
-        .isRequired,
-      text: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-};
