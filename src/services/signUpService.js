@@ -1,6 +1,6 @@
 import { api } from "./api";
 
-export function handleSignUp({ name, email, password, addAlert }) {
+export function handleSignUp({ name, email, password, addAlert, navigate }) {
   if (!name || !email || !password) {
     addAlert("error", "Preencha os campos obrigatórios!");
     return;
@@ -10,9 +10,10 @@ export function handleSignUp({ name, email, password, addAlert }) {
     .post("/users", { name, email, password })
     .then(() => {
       addAlert("success", "Usuário cadastrado com sucesso!");
+      navigate("/");
     })
     .catch((err) => {
-      let apiMessage = err.response.dat.message;
+      let apiMessage = err.response.data.message;
 
       if (apiMessage) {
         Array.isArray(apiMessage)

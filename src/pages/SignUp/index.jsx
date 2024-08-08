@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiMail, FiLock, FiArrowLeft, FiUser } from "react-icons/fi";
 
 import { BrandTitle } from "../../components/BrandTitle";
@@ -17,8 +17,10 @@ export function SignUp() {
   const [password, setPassword] = useState("");
 
   const { addAlert } = useAlerts();
+  const navigate = useNavigate();
 
-  const signUp = () => handleSignUp({ name, email, password, addAlert });
+  const signUp = () =>
+    handleSignUp({ name, email, password, addAlert, navigate });
 
   return (
     <Container>
