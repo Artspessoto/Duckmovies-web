@@ -6,7 +6,7 @@ import { BrandTitle } from "../../components/BrandTitle";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
-import { useAlerts } from "../../context/useAlerts";
+import { useAlerts } from "../../context/AlertContext/useAlerts";
 
 import { Container, Form, Background } from "./styles";
 import { handleSignUp } from "../../services/signUpService";

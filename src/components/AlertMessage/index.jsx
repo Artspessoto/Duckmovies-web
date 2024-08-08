@@ -4,7 +4,7 @@ import { Container } from "./styles";
 import Stack from "@mui/material/Stack";
 import theme from "../../styles/theme";
 import { getAlertStyles } from "../../utils/getAlertStyles";
-import { useAlerts } from "../../context/useAlerts";
+import { useAlerts } from "../../context/AlertContext/useAlerts";
 
 export function AlertMessage() {
   const { alerts, cleanAlerts } = useAlerts();
