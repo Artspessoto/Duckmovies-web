@@ -9,7 +9,6 @@ import { useAlerts } from "../../context/useAlerts";
 export function AlertMessage() {
   const { alerts, cleanAlerts } = useAlerts();
   const [show, setShow] = useState(true);
-  console.log("TESte", alerts, cleanAlerts);
 
   useEffect(() => {
     if (alerts.length > 0) {

@@ -7,7 +7,7 @@ export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
 
   const addAlert = (type, message) => {
-    setAlerts([...alerts, { severity: type, text: message }]);
+    setAlerts((prevAlerts) => [...prevAlerts, { severity: type, text: message }]);
   };
 
   const cleanAlerts = () => {

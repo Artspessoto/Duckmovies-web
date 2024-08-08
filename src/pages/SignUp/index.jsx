@@ -8,21 +8,17 @@ import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 import { useAlerts } from "../../context/useAlerts";
 
-import { Container, Form, Background } from "./styles"; 
+import { Container, Form, Background } from "./styles";
+import { handleSignUp } from "../../services/signUpService";
 
 export function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { addAlert } = useAlerts(); 
+  const { addAlert } = useAlerts();
 
-  function handleSignUp() {
-    if (!name || !email || !password) {
-      addAlert("error", "Preencha os campos obrigatórios");
-      return;
-    }
-  }
+  const signUp = () => handleSignUp({ name, email, password, addAlert });
 
   return (
     <Container>
@@ -58,7 +54,7 @@ export function SignUp() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button title="Cadastrar" onClick={handleSignUp} />
+        <Button title="Cadastrar" onClick={signUp} />
         <Link to="/">
           <ButtonText
             title="Voltar para o login"
