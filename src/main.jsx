@@ -13,13 +13,13 @@ import theme from "./styles/theme";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <AuthProvider>
-        <AlertProvider>
+      <AlertProvider>
+        <AuthProvider>
           <GlobalStyles />
           <AlertMessage />
           <Routes />
-        </AlertProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </AlertProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
