@@ -39,6 +39,8 @@ export const Profile = styled.div`
       line-height: 2.4rem;
       font-size: 1.8rem;
       color: ${({ theme }) => theme.COLORS.WHITE};
+      display: flex;
+      align-items: center;
     }
   }
 `;

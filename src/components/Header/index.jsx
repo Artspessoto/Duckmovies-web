@@ -11,7 +11,7 @@ export function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -44,7 +44,7 @@ export function Header() {
         </Link>
         <Input placeholder="Pesquisar pelo título" />
         <div>
-          <strong>Arthur Martins</strong>
+          <strong>{user.name}</strong>
           <img
             src="https://github.com/Artspessoto.png"
             alt="Foto do usuário"
