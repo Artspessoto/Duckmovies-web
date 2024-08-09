@@ -31,6 +31,7 @@ export const Profile = styled.div`
       width: 5.6rem;
       height: 5.6rem;
       border-radius: 50%;
+      cursor: pointer;
     }
 
     strong {

@@ -27,6 +27,15 @@ export function AuthProvider({ children }) {
     }
   }
 
+  function signOut() {
+    localStorage.removeItem("@duckmovies:user");
+    localStorage.removeItem("@duckmovies:token");
+
+    api.defaults.headers.authorization = null;
+
+    setData({});
+}
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("@duckmovies:user"));
     const token = localStorage.getItem("@duckmovies:token");
@@ -38,7 +47,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signIn, user: data.user }}>
+    <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>
       {children}
     </AuthContext.Provider>
   );

@@ -3,13 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Container, Profile, StyledMenu } from "./styles";
 import { BrandTitle } from "../BrandTitle";
 import { Input } from "../Input";
-// import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useAuth } from "../../context/AuthContext/useAuth";
 
 export function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const { signOut } = useAuth();
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -22,6 +23,11 @@ export function Header() {
   const handleProfileClick = () => {
     navigate("/profile");
     handleClose();
+  }
+
+  const handleLogoutClick = () => {
+    signOut();
+    navigate("/");
   }
 
   return (
@@ -42,7 +48,6 @@ export function Header() {
             src="https://github.com/Artspessoto.png"
             alt="Foto do usuário"
             onClick={handleClick}
-            style={{ cursor: "pointer" }}
           />
           <StyledMenu
             id="profile-menu"
@@ -59,7 +64,7 @@ export function Header() {
             }}
           >
             <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
           </StyledMenu>
         </div>
       </Profile>
