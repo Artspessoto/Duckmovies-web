@@ -5,6 +5,7 @@ import { BrandTitle } from "../BrandTitle";
 import { Input } from "../Input";
 import MenuItem from "@mui/material/MenuItem";
 import { useAuth } from "../../context/AuthContext/useAuth";
+import { FiUser, FiLogOut } from "react-icons/fi";
 
 export function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -63,8 +64,8 @@ export function Header() {
               horizontal: "right",
             }}
           >
-            <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
-            <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
+            <MenuItem onClick={handleProfileClick}><FiUser /> Perfil</MenuItem>
+            <MenuItem onClick={handleLogoutClick}><FiLogOut /> Sair</MenuItem>
           </StyledMenu>
         </div>
       </Profile>

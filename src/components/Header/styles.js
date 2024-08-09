@@ -56,5 +56,7 @@ export const StyledMenu = styled(Menu)`
     font-size: 1.6rem;
     padding: 8px 16px;
     font-weight: 500;
+    display: flex;
+    gap: 1rem;
   }
 `;
