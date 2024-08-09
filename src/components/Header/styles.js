@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Menu from "@mui/material/Menu";
 
 export const Container = styled.header`
   //como eu quero que na rolagem da tela o cabeçalho permaneça fixo, vamos usar a estratégia de
@@ -38,5 +39,21 @@ export const Profile = styled.div`
       font-size: 1.8rem;
       color: ${({ theme }) => theme.COLORS.WHITE};
     }
+  }
+`;
+
+export const StyledMenu = styled(Menu)`
+  & .MuiPaper-root {
+    min-width: 10rem;
+    background-color: ${({ theme }) => theme.COLORS.GRAPHITE};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+  }
+  & .MuiMenuItem-root {
+    font-size: 1.6rem;
+    padding: 8px 16px;
+    font-weight: 500;
   }
 `;
