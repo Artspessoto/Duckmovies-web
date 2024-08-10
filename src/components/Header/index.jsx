@@ -3,15 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { Container, Profile, StyledMenu } from "./styles";
 import { BrandTitle } from "../BrandTitle";
 import { Input } from "../Input";
+import avatarPlaceholder from "../../assets/images/avatarProfile.svg";
+
 import MenuItem from "@mui/material/MenuItem";
-import { useAuth } from "../../context/AuthContext/useAuth";
 import { FiUser, FiLogOut } from "react-icons/fi";
+
+import { useAuth } from "../../context/AuthContext/useAuth";
+import { api } from "../../services/api";
 
 export function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   const { signOut, user } = useAuth();
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -46,7 +51,7 @@ export function Header() {
         <div>
           <strong>{user.name}</strong>
           <img
-            src="https://github.com/Artspessoto.png"
+            src={avatarUrl}
             alt="Foto do usuário"
             onClick={handleClick}
           />
