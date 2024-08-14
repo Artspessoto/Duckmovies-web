@@ -19,8 +19,8 @@ export function AuthProvider({ children }) {
 
       api.defaults.headers.authorization = `Bearer ${token}`;
 
-      setData({ user: safeUserData, token });
-    } catch (err) {
+      setData({ user, token });
+s    } catch (err) {
       const apiResponse = err.response.data.message;
       addAlert("error", apiResponse);
       return;
@@ -34,7 +34,26 @@ export function AuthProvider({ children }) {
     api.defaults.headers.authorization = null;
 
     setData({});
-}
+  }
+
+  async function updateProfile({ user, addAlert }) {
+    if (!user.name || !user.email) {
+      addAlert("error", "Nome e e-mail são obrigatórios.");
+      return;
+    }
+
+    try {
+      await api.put("/users", user);
+      localStorage.setItem("@duckmovies:user", JSON.stringify(user));
+
+      setData({ user, token: data.token });
+      addAlert("success", "Perfil atualizado com sucesso");
+    } catch (err) {
+      const apiResponse = err.response.data.message;
+      addAlert("error", apiResponse);
+      return;
+    }
+  }
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("@duckmovies:user"));
@@ -47,7 +66,9 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>
+    <AuthContext.Provider
+      value={{ signIn, signOut, updateProfile, user: data.user }}
+    >
       {children}
     </AuthContext.Provider>
   );

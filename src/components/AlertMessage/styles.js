@@ -6,8 +6,7 @@ export const Container = styled.div`
   left: 1rem;
   width: 40rem;
   display: flex;
-  text-align: center;
-  justify-content: center;
+  text-align: left;
 
   .alert-container {
     transition: opacity 500ms ease-out, transform 500ms ease-out;
