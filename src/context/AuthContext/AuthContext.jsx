@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
       api.defaults.headers.authorization = `Bearer ${token}`;
 
       setData({ user, token });
-s    } catch (err) {
+    } catch (err) {
       const apiResponse = err.response.data.message;
       addAlert("error", apiResponse);
       return;
@@ -36,17 +36,27 @@ s    } catch (err) {
     setData({});
   }
 
-  async function updateProfile({ user, addAlert }) {
+  async function updateProfile({ user, avatarFile, addAlert }) {
     if (!user.name || !user.email) {
       addAlert("error", "Nome e e-mail são obrigatórios.");
       return;
     }
 
     try {
+      if (avatarFile) {
+        const fileUploadForm = new FormData();
+        fileUploadForm.append("avatar", avatarFile);
+
+        const response = await api.patch("/users/avatar", fileUploadForm);
+        user.avatar = response.data.avatar;
+      }
+
       await api.put("/users", user);
       localStorage.setItem("@duckmovies:user", JSON.stringify(user));
 
       setData({ user, token: data.token });
+      if (user.old_password && !user.password)
+        addAlert("info", "Senha atual ignorada.");
       addAlert("success", "Perfil atualizado com sucesso");
     } catch (err) {
       const apiResponse = err.response.data.message;
