@@ -78,7 +78,6 @@ export const MovieItemsWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-evenly;
 
   background-color: ${({ theme }) => theme.COLORS.MIDNIGHT_BLACK};
 

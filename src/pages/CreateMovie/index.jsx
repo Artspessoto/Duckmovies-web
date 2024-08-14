@@ -15,8 +15,21 @@ import { Input } from "../../components/Input";
 import { Textarea } from "../../components/Textarea";
 import { MovieNoteItem } from "../../components/MovieNoteItem";
 import { FiArrowLeft } from "react-icons/fi";
+import { useState } from "react";
 
 export function CreateMovie() {
+  const [movieTags, setMovieTags] = useState([]);
+  const [newMovieTag, setNewMovieTag] = useState("");
+
+  const handleAddMovieTag = () => {
+    setMovieTags((prevState) => [...prevState, newMovieTag]);
+    setNewMovieTag("");
+  };
+
+  const handleRemoveMovieTag = (deleted) => {
+    setMovieTags((prevState) => prevState.filter((tag) => tag !== deleted));
+  };
+
   return (
     <Container>
       <Header />
@@ -43,14 +56,20 @@ export function CreateMovie() {
           <Section>
             <h2>Marcadores</h2>
             <MovieItemsWrapper>
-              <MovieNoteItem value="Tomate" $isNew={false} />
-              <MovieNoteItem value="Sofá assassino" $isNew={true} />
+              {movieTags.map((tag, index) => (
+                <MovieNoteItem
+                  key={String(index)}
+                  value={tag}
+                  onClick={() => handleRemoveMovieTag(tag)}
+                />
+              ))}
               <MovieNoteItem
-                value="Tomate assassino ino ino ino"
-                $isNew={false}
+                $isNew
+                placeholder="Nova categoria"
+                onChange={(e) => setNewMovieTag(e.target.value)}
+                value={newMovieTag}
+                onClick={handleAddMovieTag}
               />
-              <MovieNoteItem value="Tomate" $isNew={false} />
-              <MovieNoteItem value="Sofá assassino" $isNew={true} />
             </MovieItemsWrapper>
           </Section>
           <ButtonWrapper>
