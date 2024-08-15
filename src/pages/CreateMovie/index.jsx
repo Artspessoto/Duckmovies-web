@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
   Form,
@@ -15,9 +16,18 @@ import { Input } from "../../components/Input";
 import { Textarea } from "../../components/Textarea";
 import { MovieNoteItem } from "../../components/MovieNoteItem";
 import { FiArrowLeft } from "react-icons/fi";
-import { useState } from "react";
+import { CreateMovieNotePayload } from "../../validation/movieValidation";
+import { api } from "../../services/api";
+import { useAlerts } from "../../context/AlertContext/useAlerts";
 
 export function CreateMovie() {
+  const { addAlert } = useAlerts();
+  const navigate = useNavigate();
+
+  const [title, setTitle] = useState("");
+  const [rating, setRating] = useState("");
+  const [description, setDescription] = useState("");
+
   const [movieTags, setMovieTags] = useState([]);
   const [newMovieTag, setNewMovieTag] = useState("");
 
@@ -28,6 +38,41 @@ export function CreateMovie() {
 
   const handleRemoveMovieTag = (deleted) => {
     setMovieTags((prevState) => prevState.filter((tag) => tag !== deleted));
+  };
+
+  const handleNewMovie = async () => {
+    const ratingMovie = parseFloat(rating);
+
+    if (isNaN(ratingMovie)) {
+      addAlert("error", "Avaliação deve ser um número válido entre 1 e 5");
+      return;
+    }
+
+    const result = CreateMovieNotePayload.safeParse({
+      title,
+      description,
+      rating: ratingMovie,
+      tags: movieTags,
+    });
+
+    if (!result.success) {
+      result.error.errors.forEach((error) => {
+        const message = error.message;
+        addAlert("error", message);
+      });
+
+      return;
+    }
+
+    await api.post("/movie_notes", {
+      title,
+      description,
+      rating: ratingMovie,
+      tags: movieTags,
+    });
+
+    addAlert("success", "Anotação sobre filme criada com sucesso!");
+    navigate("/");
   };
 
   return (
@@ -47,11 +92,24 @@ export function CreateMovie() {
           <h1>Novo filme</h1>
 
           <InputWrapper>
-            <Input placeholder="Título" type="text" />
-            <Input placeholder="Sua nota (de 0 a 5)" type="text" />
+            <Input
+              placeholder="Título"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <Input
+              placeholder="Sua nota (de 0 a 5)"
+              type="text"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+            />
           </InputWrapper>
 
-          <Textarea placeholder="Observações" />
+          <Textarea
+            placeholder="Observações"
+            onChange={(e) => setDescription(e.target.value)}
+          />
 
           <Section>
             <h2>Marcadores</h2>
@@ -60,6 +118,7 @@ export function CreateMovie() {
                 <MovieNoteItem
                   key={String(index)}
                   value={tag}
+                  $isNew={false}
                   onClick={() => handleRemoveMovieTag(tag)}
                 />
               ))}
@@ -74,7 +133,7 @@ export function CreateMovie() {
           </Section>
           <ButtonWrapper>
             <Button title="Excluir filme" />
-            <Button title="Salvar alterações" />
+            <Button title="Salvar alterações" onClick={handleNewMovie} />
           </ButtonWrapper>
         </Form>
       </Main>
