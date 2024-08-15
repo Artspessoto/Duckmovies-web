@@ -49,7 +49,6 @@ export function Header({ children }) {
             logoWidth="4rem"
           />
         </Link>
-        {/* <Input placeholder="Pesquisar pelo título" /> */}
         {children}
         <div>
           <strong>{user.name}</strong>
