@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { Container, Content, AddMovie, TitleWrapper } from "./styles";
 import { Header } from "../../components/Header";
@@ -7,8 +8,13 @@ import { Input } from "../../components/Input";
 import { FiPlus } from "react-icons/fi";
 
 export function Home() {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [movieNotes, setMovieNotes] = useState([]);
+
+  const handleMoviePreview = (id) => {
+    navigate(`/preview/${id}`)
+  }
 
   useEffect(() => {
     const getMovieNotes = async () => {
@@ -39,7 +45,7 @@ export function Home() {
           <MovieNote
             key={String(movie.id)}
             data={movie}
-            to={`/preview/${movie.id}`}
+            onClick={() => handleMoviePreview(movie.id)}
           />
         ))}
       </Content>
