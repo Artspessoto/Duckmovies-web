@@ -77,8 +77,11 @@ export function CreateMovie() {
 
   return (
     <Container>
-      <Header />
-      <Main>
+      <Header>
+        <Input
+          placeholder="Pesquisar pelo título"
+        />
+      </Header>      <Main>
         <Link to="/">
           <ButtonText
             className="button-text"

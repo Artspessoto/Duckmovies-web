@@ -3,13 +3,18 @@ import { Container, Section, Content, MovieHeader, Main } from "./styles";
 import { Header } from "../../components/Header";
 import { Category } from "../../components/Category";
 import { ButtonText } from "../../components/ButtonText";
+import { Input } from "../../components/Input";
 import { FiArrowLeft } from "react-icons/fi";
 import { RatingMovie } from "../../components/RatingMovie";
 
 export function MoviePreview() {
   return (
     <Container>
-      <Header />
+      <Header>
+        <Input
+          placeholder="Pesquisar pelo título"
+        />
+      </Header>
       <Main>
         <Content>
           <MovieHeader>

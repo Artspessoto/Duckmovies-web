@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 100%;
 
   display: grid;
-  grid-template-rows: 10.5rem auto;
+  grid-template-rows: 11.6rem 13rem auto;
   grid-template-areas:
     "header"
     "title"
@@ -20,7 +20,8 @@ export const TitleWrapper = styled.div`
   justify-content: space-between;
 
   grid-area: title;
-  padding: 4.4rem 8rem;
+  padding: 0 8rem 0rem;
+  margin-bottom: 0;
 
   > h1 {
     font-size: 3.2rem;

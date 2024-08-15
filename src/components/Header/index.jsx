@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Profile, StyledMenu } from "./styles";
 import { BrandTitle } from "../BrandTitle";
-import { Input } from "../Input";
 import avatarPlaceholder from "../../assets/images/avatarProfile.svg";
 
 import MenuItem from "@mui/material/MenuItem";
@@ -10,13 +9,16 @@ import { FiUser, FiLogOut } from "react-icons/fi";
 
 import { useAuth } from "../../context/AuthContext/useAuth";
 import { api } from "../../services/api";
+import PropTypes from "prop-types";
 
-export function Header() {
+export function Header({ children }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   const { signOut, user } = useAuth();
-  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+  const avatarUrl = user.avatar
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
+    : avatarPlaceholder;
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -29,12 +31,12 @@ export function Header() {
   const handleProfileClick = () => {
     navigate("/profile");
     handleClose();
-  }
+  };
 
   const handleLogoutClick = () => {
     signOut();
     navigate("/");
-  }
+  };
 
   return (
     <Container>
@@ -47,14 +49,11 @@ export function Header() {
             logoWidth="4rem"
           />
         </Link>
-        <Input placeholder="Pesquisar pelo título" />
+        {/* <Input placeholder="Pesquisar pelo título" /> */}
+        {children}
         <div>
           <strong>{user.name}</strong>
-          <img
-            src={avatarUrl}
-            alt="Foto do usuário"
-            onClick={handleClick}
-          />
+          <img src={avatarUrl} alt="Foto do usuário" onClick={handleClick} />
           <StyledMenu
             id="profile-menu"
             anchorEl={anchorEl}
@@ -69,11 +68,19 @@ export function Header() {
               horizontal: "right",
             }}
           >
-            <MenuItem onClick={handleProfileClick}><FiUser /> Perfil</MenuItem>
-            <MenuItem onClick={handleLogoutClick}><FiLogOut /> Sair</MenuItem>
+            <MenuItem onClick={handleProfileClick}>
+              <FiUser /> Perfil
+            </MenuItem>
+            <MenuItem onClick={handleLogoutClick}>
+              <FiLogOut /> Sair
+            </MenuItem>
           </StyledMenu>
         </div>
       </Profile>
     </Container>
   );
+}
+
+Header.propTypes = {
+  children: PropTypes.node.isRequired
 }
