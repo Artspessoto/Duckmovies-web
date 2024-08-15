@@ -10,6 +10,7 @@ import { Input } from "../../components/Input";
 import { FiArrowLeft, FiClock } from "react-icons/fi";
 import { RatingMovie } from "../../components/RatingMovie";
 import avatarPlaceholder from "../../assets/images/avatarProfile.svg";
+import { formatDateTime } from "../../utils/formatDateTime";
 
 export function MoviePreview() {
   const [data, setData] = useState("");
@@ -46,7 +47,7 @@ export function MoviePreview() {
               </h1>
               <span>
                 <img src={avatarUrl} alt="Foto do usuário" />
-                Por {user.name} <FiClock /> {data.updated_at}
+                Por {user.name} <FiClock /> {formatDateTime(data.updated_at)}
               </span>
             </MovieHeader>
 
