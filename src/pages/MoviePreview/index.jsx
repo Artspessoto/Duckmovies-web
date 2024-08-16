@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { useAuth } from "../../context/AuthContext/useAuth";
 import { Container, Section, Content, MovieHeader, Main } from "./styles";
@@ -8,6 +8,7 @@ import { Category } from "../../components/Category";
 import { ButtonText } from "../../components/ButtonText";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import ConfirmDialog from "../../components/ConfirmDialog";
 import { FiArrowLeft, FiClock } from "react-icons/fi";
 import { RatingMovie } from "../../components/RatingMovie";
 import avatarPlaceholder from "../../assets/images/avatarProfile.svg";
@@ -15,11 +16,27 @@ import { formatDateTime } from "../../utils/formatDateTime";
 
 export function MoviePreview() {
   const [data, setData] = useState("");
+  const [open, setOpen] = useState(false);
+
   const params = useParams();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const avatarUrl = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
     : avatarPlaceholder;
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleConfirm = () => {
+    setOpen(true);
+  };
+
+  const handleRemoveMovie = async () => {
+    await api.delete(`/movie_notes/${params.id}`);
+    navigate("/");
+  };
 
   useEffect(() => {
     const getNoteById = async () => {
@@ -61,8 +78,17 @@ export function MoviePreview() {
             )}
 
             <p>{data.description}</p>
+            <Button title={"Excluir filme"} onClick={handleConfirm} />
+            <ConfirmDialog
+              open={open}
+              handleClose={handleClose}
+              handleConfirm={handleRemoveMovie}
+              title="Confirmar Exclusão"
+              message="Você tem certeza que deseja excluir esta nota de filme? Esta ação não pode ser desfeita."
+              confirmText="Excluir"
+              cancelText="Cancelar"
+            />
           </Content>
-          <Button title={"Excluir filme"} loading/>
         </Main>
       )}
     </Container>

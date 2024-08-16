@@ -27,7 +27,7 @@ export const Main = styled.main`
   }
 
   &&::-webkit-scrollbar-thumb {
-    background: ${({theme}) => theme.COLORS.PINK};
+    background: ${({ theme }) => theme.COLORS.PINK};
     border-radius: 0.8rem;
   }
 `;
@@ -49,6 +49,15 @@ export const Content = styled.div`
     margin-top: 1.6rem;
     text-align: justify;
   }
+
+  > button {
+    background-color: ${({ theme }) => theme.COLORS.MIDNIGHT_BLACK};
+    color: ${({ theme }) => theme.COLORS.PINK};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22rem;
+  }
 `;
 
 export const MovieHeader = styled.div`
@@ -61,5 +70,23 @@ export const MovieHeader = styled.div`
     gap: 1rem;
     font-weight: 700;
     font-size: 3.6rem;
+  }
+
+  span {
+    display: flex;
+    gap: 0.8rem;
+
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+    }
+
+    svg {
+      color: ${({ theme }) => theme.COLORS.PINK};
+      align-self: center;
+    }
   }
 `;
