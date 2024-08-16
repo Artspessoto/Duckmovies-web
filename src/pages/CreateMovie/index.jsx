@@ -75,6 +75,14 @@ export function CreateMovie() {
     navigate("/");
   };
 
+  const handleCancel = () => {
+    setTitle("");
+    setDescription("");
+    setMovieTags([]);
+    setNewMovieTag("");
+    navigate("/");
+  };
+
   return (
     <Container>
       <Header>
@@ -134,7 +142,7 @@ export function CreateMovie() {
             </MovieItemsWrapper>
           </Section>
           <ButtonWrapper>
-            <Button title="Excluir filme" />
+            <Button title="Cancelar" onClick={handleCancel} />
             <Button title="Salvar alterações" onClick={handleNewMovie} />
           </ButtonWrapper>
         </Form>

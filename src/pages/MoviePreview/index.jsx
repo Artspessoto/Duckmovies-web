@@ -6,6 +6,7 @@ import { Container, Section, Content, MovieHeader, Main } from "./styles";
 import { Header } from "../../components/Header";
 import { Category } from "../../components/Category";
 import { ButtonText } from "../../components/ButtonText";
+import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { FiArrowLeft, FiClock } from "react-icons/fi";
 import { RatingMovie } from "../../components/RatingMovie";
@@ -61,6 +62,7 @@ export function MoviePreview() {
 
             <p>{data.description}</p>
           </Content>
+          <Button title={"Excluir filme"} loading/>
         </Main>
       )}
     </Container>
