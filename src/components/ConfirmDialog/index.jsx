@@ -1,10 +1,12 @@
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { Button } from "../Button";
+import theme from "../../styles/theme";
 import PropTypes from "prop-types";
+import { Container } from "./styles";
 
 export default function ConfirmDialog({
   open,
@@ -21,18 +23,40 @@ export default function ConfirmDialog({
       onClose={handleClose}
       aria-labelledby="confirmation-dialog-title"
       aria-describedby="confirmation-dialog-description"
+      sx={{
+        "& .MuiPaper-root": {
+          fontFamily: `Poppins, sans-serif`,
+          backgroundColor: theme.COLORS.ONYX,
+          color: theme.COLORS.WHITE,
+        },
+      }}
     >
-      <DialogTitle id="confirmation-dialog-title">{title}</DialogTitle>
+      <DialogTitle
+        id="confirmation-dialog-title"
+        sx={{
+          fontSize: "2rem",
+          fontWeight: "700",
+        }}
+      >
+        {title}
+      </DialogTitle>
       <DialogContent>
-        <DialogContentText id="confirmation-dialog-description">
+        <DialogContentText
+          id="confirmation-dialog-description"
+          sx={{
+            fontSize: "1.6rem",
+            color: theme.COLORS.WHITE,
+            paddingBottom: "0"
+          }}
+        >
           {message}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>{cancelText}</Button>
-        <Button onClick={handleConfirm} autoFocus>
-          {confirmText}
-        </Button>
+        <Container>
+          <Button title={cancelText} onClick={handleClose} />
+          <Button title={confirmText} onClick={handleConfirm} />
+        </Container>
       </DialogActions>
     </Dialog>
   );
