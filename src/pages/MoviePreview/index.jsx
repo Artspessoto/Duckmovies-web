@@ -13,6 +13,7 @@ import { FiArrowLeft, FiClock } from "react-icons/fi";
 import { RatingMovie } from "../../components/RatingMovie";
 import avatarPlaceholder from "../../assets/images/avatarProfile.svg";
 import { formatDateTime } from "../../utils/formatDateTime";
+import { useAlerts } from "../../context/AlertContext/useAlerts";
 
 export function MoviePreview() {
   const [data, setData] = useState("");
@@ -20,6 +21,7 @@ export function MoviePreview() {
 
   const params = useParams();
   const { user } = useAuth();
+  const { addAlert } = useAlerts();
   const navigate = useNavigate();
   const avatarUrl = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
@@ -34,8 +36,15 @@ export function MoviePreview() {
   };
 
   const handleRemoveMovie = async () => {
-    await api.delete(`/movie_notes/${params.id}`);
-    navigate("/");
+    try {
+      await api.delete(`/movie_notes/${params.id}`);
+      addAlert("success", "Nota de filme deletada com sucesso.");
+      navigate("/");
+    } catch (err) {
+      const apiResponse = err.response.data.message;
+      addAlert("error", apiResponse);
+      return;
+    }
   };
 
   useEffect(() => {
