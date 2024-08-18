@@ -36,9 +36,16 @@ export function CreateMovie() {
       addAlert("error", "Valor da tag é obrigatório");
       return;
     }
-    
+
     setMovieTags((prevState) => [...prevState, newMovieTag]);
     setNewMovieTag("");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddMovieTag();
+    }
   };
 
   const handleRemoveMovieTag = (deleted) => {
@@ -145,6 +152,7 @@ export function CreateMovie() {
                 onChange={(e) => setNewMovieTag(e.target.value)}
                 value={newMovieTag}
                 onClick={handleAddMovieTag}
+                onKeyDown={handleKeyDown}
               />
             </MovieItemsWrapper>
           </Section>
