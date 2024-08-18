@@ -18,3 +18,11 @@ export const Container = styled.textarea`
     color: ${({ theme }) => theme.COLORS.LAVENDER_GRAY};
   }
 `;
+
+export const CharacterCounter = styled.span`
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 14px;
+    color: ${({ theme }) => theme.COLORS.LAVENDER_GRAY};
+`;

@@ -118,7 +118,9 @@ export function CreateMovie() {
 
           <Textarea
             placeholder="Observações"
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
+            maxLength={1500}
           />
 
           <Section>
