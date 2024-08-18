@@ -7,7 +7,7 @@ export const CreateMovieNotePayload = z.object({
     .max(255, "Título não pode exceder 255 caracteres"),
   description: z
     .string()
-    .max(255, "Descrição sobre filme não pode exceder 255 caracteres")
+    .max(1500, "Descrição sobre filme não pode exceder 1500 caracteres")
     .optional(),
   rating: z
     .number()

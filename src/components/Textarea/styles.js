@@ -21,8 +21,7 @@ export const Container = styled.textarea`
 
 export const CharacterCounter = styled.span`
     position: absolute;
-    bottom: 8px;
-    right: 8px;
-    font-size: 14px;
+    bottom: 2rem;
+    right: 0.8rem;
     color: ${({ theme }) => theme.COLORS.LAVENDER_GRAY};
 `;
