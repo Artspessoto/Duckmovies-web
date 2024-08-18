@@ -32,6 +32,11 @@ export function CreateMovie() {
   const [newMovieTag, setNewMovieTag] = useState("");
 
   const handleAddMovieTag = () => {
+    if (newMovieTag.trim() == "") {
+      addAlert("error", "Valor da tag é obrigatório");
+      return;
+    }
+    
     setMovieTags((prevState) => [...prevState, newMovieTag]);
     setNewMovieTag("");
   };
