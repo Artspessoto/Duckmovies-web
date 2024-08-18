@@ -39,11 +39,23 @@ export function Profile() {
   };
 
   const handleChangeAvatar = (event) => {
-    const file = event.target.files[0];
-    setAvatarFile(file);
+    const allowedExtensions = ["jpeg", "jpg", "png", "gif"];
 
-    const imagePreview = URL.createObjectURL(file);
-    setAvatar(imagePreview);
+    const file = event.target.files[0];
+
+    if(file){
+      const fileExtension = `${file.name.split(".").pop().toLowerCase()}`
+
+      if(!allowedExtensions.includes(fileExtension)){
+        addAlert("error", "Apenas imagens com extensão jpeg, jpg, png ou gif são permitidas.")
+        return;
+      }
+
+      setAvatarFile(file);
+
+      const imagePreview = URL.createObjectURL(file);
+      setAvatar(imagePreview);
+    }
   };
 
   return (

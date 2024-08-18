@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
       const response = await api.post("/sessions", { email, password });
       const { user, token } = response.data;
 
+      // eslint-disable-next-line no-unused-vars
       const { id, password: _, ...safeUserData } = user;
 
       localStorage.setItem("@duckmovies:user", JSON.stringify(safeUserData));
@@ -52,11 +53,14 @@ export function AuthProvider({ children }) {
       }
 
       await api.put("/users", user);
-      localStorage.setItem("@duckmovies:user", JSON.stringify(user));
+      // eslint-disable-next-line no-unused-vars
+      const { id, password, old_password, ...safeUserData } = user;
+      localStorage.setItem("@duckmovies:user", JSON.stringify(safeUserData));
 
       setData({ user, token: data.token });
-      if (user.old_password && !user.password)
+      if (user.old_password && !user.password) {
         addAlert("info", "Senha atual ignorada.");
+      }
       addAlert("success", "Perfil atualizado com sucesso");
     } catch (err) {
       const apiResponse = err.response.data.message;

@@ -72,7 +72,7 @@ export function CreateMovie() {
     });
 
     addAlert("success", "Anotação sobre filme criada com sucesso!");
-    navigate("/");
+    navigate(-1);
   };
 
   const handleCancel = () => {

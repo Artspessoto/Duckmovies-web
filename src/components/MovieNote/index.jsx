@@ -11,7 +11,7 @@ export function MovieNote({ data, ...rest }) {
     <Container {...rest}>
       <MovieTitleWrapper>
         <h1>{data.title}</h1>
-        <RatingMovie rate={4} size={15} />
+        <RatingMovie rate={data.rating} size={15} />
       </MovieTitleWrapper>
 
       {data.tags && (

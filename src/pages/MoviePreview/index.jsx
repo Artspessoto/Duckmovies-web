@@ -39,7 +39,7 @@ export function MoviePreview() {
     try {
       await api.delete(`/movie_notes/${params.id}`);
       addAlert("success", "Nota de filme deletada com sucesso.");
-      navigate("/");
+      navigate(-1);
     } catch (err) {
       const apiResponse = err.response.data.message;
       addAlert("error", apiResponse);
