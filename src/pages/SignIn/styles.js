@@ -51,7 +51,7 @@ export const Form = styled.form`
     padding: 0 2rem;
 
     > h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-top: 2rem;
       margin-bottom: 2rem;
     }
@@ -65,8 +65,9 @@ export const Form = styled.form`
     }
   }
 
-  @media (max-width: 600px) and (min-height: 768px) {
+  @media (max-width: 600px) and (min-height: 600px) {
     padding: 10rem 2rem;
+    margin-bottom: 5rem;
 
     > h2 {
       font-size: 1.8rem;
