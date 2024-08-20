@@ -10,6 +10,13 @@ export const Container = styled.div`
     padding: 0 12.4rem;
     position: relative;
   }
+
+  @media (max-width: 600px) {
+    > header {
+      height: 8rem;
+      padding: 0 3rem;
+    }
+  }
 `;
 
 export const Avatar = styled.div`
@@ -18,10 +25,21 @@ export const Avatar = styled.div`
   height: 20rem;
   margin: -10.4rem auto 3.2rem;
 
+  @media (max-width: 600px) {
+    width: 15rem;
+    height: 15rem;
+    margin: -7rem auto 2.2rem;
+  }
+
   > img {
     border-radius: 50%;
     width: 20rem;
     height: 20rem;
+
+    @media (max-width: 600px) {
+      width: 15rem;
+      height: 15rem;
+    }
   }
 
   > label {

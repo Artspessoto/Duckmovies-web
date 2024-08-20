@@ -22,7 +22,7 @@ export const Container = styled.div`
   > button {
     border: none;
     background: none;
-    color: ${({ theme }) => theme.COLORS.PINK}; 
+    color: ${({ theme }) => theme.COLORS.PINK};
 
     > svg {
       display: flex;
@@ -45,5 +45,11 @@ export const Container = styled.div`
     &::placeholder {
       color: ${({ theme }) => theme.COLORS.LAVENDER_GRAY};
     }
+  }
+
+  @media (max-width: 600px) {
+    height: 4.5rem;
+    min-width: 17rem;
+    padding: 1rem;
   }
 `;

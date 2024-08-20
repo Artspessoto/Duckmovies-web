@@ -13,8 +13,8 @@ export function Home() {
   const [movieNotes, setMovieNotes] = useState([]);
 
   const handleMoviePreview = (id) => {
-    navigate(`/preview/${id}`)
-  }
+    navigate(`/preview/${id}`);
+  };
 
   useEffect(() => {
     const getMovieNotes = async () => {
@@ -37,7 +37,7 @@ export function Home() {
         <h1>Meus filmes</h1>
         <AddMovie to="/create-movie">
           <FiPlus />
-          Adicionar filme
+          <span> Adicionar filme</span>
         </AddMovie>
       </TitleWrapper>
       <Content>

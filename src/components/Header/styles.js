@@ -20,10 +20,6 @@ export const Container = styled.header`
 
   @media (max-width: 600px) {
     padding: 0 3rem;
-
-    > div {
-      gap: 2rem;
-    }
   }
 `;
 
@@ -54,6 +50,8 @@ export const Profile = styled.div`
   }
 
   @media (max-width: 600px) {
+    gap: 2rem;
+    
     > a {
       background: url(${Logo}) no-repeat center;
       background-size: cover;
@@ -65,13 +63,13 @@ export const Profile = styled.div`
       }
     }
 
-    > div {
+    > div:nth-child(2) {
       gap: 0.1rem;
-      width: 23rem;
+      width: 20rem;
       margin-top: 1rem;
     }
 
-    > div {
+    > div:nth-child(3) {
       strong {
         display: none;
       }

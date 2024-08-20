@@ -11,6 +11,10 @@ export const Container = styled.div`
     "header"
     "title"
     "content";
+
+    @media (max-width: 600px) {
+      grid-template-rows: 11.6rem 10rem auto;
+    }
 `;
 
 export const TitleWrapper = styled.div`
@@ -29,6 +33,13 @@ export const TitleWrapper = styled.div`
 
     display: flex;
     align-items: center;
+  }
+
+  @media (max-width: 600px) {
+    justify-content: center;
+    > h1 {
+      font-size: 2.3rem;
+    }
   }
 `;
 
@@ -49,6 +60,17 @@ export const AddMovie = styled(Link)`
 
   height: 4.8rem;
   width: 18rem;
+
+  @media (max-width: 600px) {
+    margin-left: 2rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+
+    > span {
+      display: none;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -71,5 +93,23 @@ export const Content = styled.div`
   &&::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.COLORS.PINK};
     border-radius: 0.8rem;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0 6rem;
+
+    &::-webkit-scrollbar {
+      width: 0.8rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      background-clip: content-box;
+    }
+
+    &&::-webkit-scrollbar-thumb {
+      background: ${({ theme }) => theme.COLORS.PINK};
+      border-radius: 0.8rem;
+    }
   }
 `;

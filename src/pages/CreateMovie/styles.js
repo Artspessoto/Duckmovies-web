@@ -41,6 +41,15 @@ export const Main = styled.main`
     background: ${({ theme }) => theme.COLORS.PINK};
     border-radius: 0.8rem;
   }
+
+  @media (max-width: 600px) {
+    padding: 2.5rem 0;
+
+    .button-text {
+      padding: 0 4rem;
+      margin-bottom: 2rem;
+    }
+  }
 `;
 
 export const Form = styled.div`
@@ -55,11 +64,26 @@ export const Form = styled.div`
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+
+  @media (max-width: 600px) {
+    padding: 0 4rem;
+    gap: 0.5rem;
+
+    h1 {
+      font-size: 2.4rem;
+    }
+  }
 `;
 
 export const InputWrapper = styled.div`
   display: flex;
   gap: 4rem;
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;
 
 export const Section = styled.section`
@@ -71,6 +95,13 @@ export const Section = styled.section`
     color: ${({ theme }) => theme.COLORS.GRAY_TAUPE};
     font-size: 2rem;
     font-weight: 400;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0.8rem 0;
+    > h2 {
+      margin-bottom: 1.4rem;
+    }
   }
 `;
 
@@ -93,14 +124,15 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;  
+  gap: 2rem;
 
-  button:nth-child(1){
+  button:nth-child(1) {
     background-color: ${({ theme }) => theme.COLORS.MIDNIGHT_BLACK};
     color: ${({ theme }) => theme.COLORS.PINK};
     margin-top: 0;
   }
-  button:nth-child(2){
+  button:nth-child(2) {
     margin-top: 0;
   }
 `;
+
