@@ -8,6 +8,14 @@ export const Container = styled.div`
   display: flex;
   text-align: left;
 
+  @media (max-width: 600px) and (min-height: 600px) {
+    width: 20rem;
+  }
+
+  @media (max-width: 600px) {
+    width: 30rem;
+  }
+
   .alert-container {
     transition: opacity 500ms ease-out, transform 500ms ease-out;
   }

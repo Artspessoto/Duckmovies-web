@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Menu from "@mui/material/Menu";
+import Logo from "../../assets/icons/duckmoviesLogo.svg";
 
 export const Container = styled.header`
   //como eu quero que na rolagem da tela o cabeçalho permaneça fixo, vamos usar a estratégia de
@@ -16,6 +17,14 @@ export const Container = styled.header`
   justify-content: space-evenly;
 
   padding: 0 8rem;
+
+  @media (max-width: 600px) {
+    padding: 0 3rem;
+
+    > div {
+      gap: 2rem;
+    }
+  }
 `;
 
 export const Profile = styled.div`
@@ -41,6 +50,31 @@ export const Profile = styled.div`
       color: ${({ theme }) => theme.COLORS.WHITE};
       display: flex;
       align-items: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    > a {
+      background: url(${Logo}) no-repeat center;
+      background-size: cover;
+      width: 5rem;
+      height: 5rem;
+
+      > h3 {
+        display: none;
+      }
+    }
+
+    > div {
+      gap: 0.1rem;
+      width: 23rem;
+      margin-top: 1rem;
+    }
+
+    > div {
+      strong {
+        display: none;
+      }
     }
   }
 `;
