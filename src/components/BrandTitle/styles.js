@@ -6,6 +6,10 @@ export const Container = styled.h3`
   color: ${({ theme }) => theme.COLORS.PINK};
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 export const Logo = styled.img`
