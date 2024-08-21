@@ -50,6 +50,11 @@ export const Main = styled.main`
       margin-bottom: 2rem;
     }
   }
+
+  @media (max-width: 600px) and (min-height: 667px) {
+    padding-top: 2.5rem;
+    padding-bottom: 40rem;
+  }
 `;
 
 export const Form = styled.div`
@@ -135,4 +140,3 @@ export const ButtonWrapper = styled.div`
     margin-top: 0;
   }
 `;
-
