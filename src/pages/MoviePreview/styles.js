@@ -30,6 +30,16 @@ export const Main = styled.main`
     background: ${({ theme }) => theme.COLORS.PINK};
     border-radius: 0.8rem;
   }
+
+  @media (max-width: 600px) {
+    padding: 2.5rem 0;
+  }
+
+  @media (max-width: 600px) and (min-height: 667px) {
+    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 38rem;
+  }
 `;
 
 export const Section = styled.section`
@@ -47,6 +57,7 @@ export const Content = styled.div`
     line-height: auto;
     font-size: 1.6rem;
     margin-top: 1.6rem;
+    margin-bottom: 2rem;
     text-align: justify;
   }
 
@@ -56,7 +67,23 @@ export const Content = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 22rem;
+    width: 20rem;
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 3rem;
+
+    > p {
+    line-height: auto;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  > button {
+    font-size: 1.4rem;
+    width: 15rem;
+  }
   }
 `;
 
@@ -87,6 +114,19 @@ export const MovieHeader = styled.div`
     svg {
       color: ${({ theme }) => theme.COLORS.PINK};
       align-self: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.4rem;
+
+      > div {
+        svg {
+          height: 2.5rem;
+          padding-top: 0.3rem;
+        }
+      }
     }
   }
 `;
