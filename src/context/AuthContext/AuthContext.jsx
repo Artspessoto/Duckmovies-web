@@ -47,13 +47,28 @@ export function AuthProvider({ children }) {
     const result = UpdateUserPayload.safeParse({
       email: user.email,
       name: user.name,
-      password: user.password
+      password: user.password,
     });
 
     if (!result.success) {
+      const groupedErrors = {};
+
       result.error.errors.forEach((error) => {
-        addAlert("error", error.message);
+        const path = error.path[0];
+        const message = error.message;
+
+        if (groupedErrors[path]) {
+          groupedErrors[path].push(message);
+        } else {
+          groupedErrors[path] = [message];
+        }
       });
+
+      Object.entries(groupedErrors).forEach(([, messages]) => {
+        const combinedMessage = messages.join(" ; ");
+        addAlert("error", combinedMessage);
+      });
+
       return;
     }
 
