@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { api } from "../../services/api";
+import { UpdateUserPayload } from "../../validation/userDataValidation";
 import PropTypes from "prop-types";
 
 export const AuthContext = createContext({});
@@ -40,6 +41,34 @@ export function AuthProvider({ children }) {
   async function updateProfile({ user, avatarFile, addAlert }) {
     if (!user.name || !user.email) {
       addAlert("error", "Nome e e-mail são obrigatórios.");
+      return;
+    }
+
+    const result = UpdateUserPayload.safeParse({
+      email: user.email,
+      name: user.name,
+      password: user.password,
+    });
+
+    if (!result.success) {
+      const groupedErrors = {};
+
+      result.error.errors.forEach((error) => {
+        const path = error.path[0];
+        const message = error.message;
+
+        if (groupedErrors[path]) {
+          groupedErrors[path].push(message);
+        } else {
+          groupedErrors[path] = [message];
+        }
+      });
+
+      Object.entries(groupedErrors).forEach(([, messages]) => {
+        const combinedMessage = messages.join(" ; ");
+        addAlert("error", combinedMessage);
+      });
+
       return;
     }
 
