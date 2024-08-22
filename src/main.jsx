@@ -1,25 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import GlobalStyles from "./styles/global";
-import { ThemeProvider } from "styled-components";
-import { AlertProvider } from "./context/AlertContext/AlertContext";
-import { AuthProvider } from "./context/AuthContext/AuthContext";
-import { AlertMessage } from "./components/AlertMessage";
-
-import { Routes } from "./routes";
-
-import theme from "./styles/theme";
+import { App } from "./containers/App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <AlertProvider>
-        <AuthProvider>
-          <GlobalStyles />
-          <AlertMessage />
-          <Routes />
-        </AuthProvider>
-      </AlertProvider>
-    </ThemeProvider>
+    <App />
   </React.StrictMode>
 );
