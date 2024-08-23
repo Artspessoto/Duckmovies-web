@@ -7,5 +7,13 @@ export default defineConfig({
     globals: true,
     setupFiles: ["@testing-library/jest-dom"],
     environment: "jsdom",
+    include: ['./src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/cypress/**',
+      '**/.{idea,git,cache,output,temp}/**',
+      './src/config/**',
+    ],
   },
 });

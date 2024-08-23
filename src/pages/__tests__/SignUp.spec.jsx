@@ -1,21 +1,17 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { SignUp } from "../SignUp";
-import { BrowserRouter } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext/AuthContext";
-import { ThemeProvider } from "styled-components";
-import { AlertProvider } from "../../context/AlertContext/AlertContext";
-import { handleSignUp } from "../../services/signUpService";
-import theme from "../../styles/theme";
-import { useNavigate } from "react-router-dom";
-import { useAlerts } from "../../context/AlertContext/useAlerts";
+import { App } from "../../containers/App";
+import { RouterWrapper } from "../../test-utils/RouterWrapper";
 
 vi.mock("../../services/signUpService.js", () => ({
   handleSignUp: vi.fn(),
 }));
 
 vi.mock("../../context/AlertContext/useAlerts.js", () => ({
-  useAlerts: vi.fn(),
+  useAlerts: vi.fn().mockReturnValue({
+    alerts: [],
+    cleanAlerts: vi.fn(),
+  }),
 }));
 
 vi.mock("react-router-dom", async (importOriginal) => {
@@ -28,24 +24,15 @@ vi.mock("react-router-dom", async (importOriginal) => {
 });
 
 describe("SignUp page", () => {
-  const mockNavigate = vi.fn();
-  const mockAddAlert = vi.fn();
-
   beforeEach(() => {
     vi.clearAllMocks();
-    useAlerts.mockReturnValue({ addAlert: mockAddAlert });
-    useNavigate.mockReturnValue(mockNavigate);
   });
 
   it("Should be render SignUp form correctly", async () => {
     render(
-      <ThemeProvider theme={theme}>
-        <AlertProvider>
-          <BrowserRouter>
-            <SignUp />
-          </BrowserRouter>
-        </AlertProvider>
-      </ThemeProvider>
+      <RouterWrapper initialEntries={["/register"]}>
+        <App />
+      </RouterWrapper>
     );
 
     expect(screen.getByPlaceholderText(/Nome/i)).toBeInTheDocument();
