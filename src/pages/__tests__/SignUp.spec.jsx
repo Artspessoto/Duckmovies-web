@@ -3,6 +3,14 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { App } from "../../containers/App";
 import { RouterWrapper } from "../../test-utils/RouterWrapper";
 
+export function renderSignUpPage() {
+  return render(
+    <RouterWrapper initialEntries={["/register"]}>
+      <App />
+    </RouterWrapper>
+  );
+}
+
 vi.mock("../../services/signUpService.js", () => ({
   handleSignUp: vi.fn(),
 }));
@@ -29,11 +37,7 @@ describe("SignUp page", () => {
   });
 
   it("Should be render SignUp form correctly", async () => {
-    render(
-      <RouterWrapper initialEntries={["/register"]}>
-        <App />
-      </RouterWrapper>
-    );
+    renderSignUpPage();
 
     expect(screen.getByPlaceholderText(/Nome/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/E-mail/i)).toBeInTheDocument();
@@ -44,5 +48,23 @@ describe("SignUp page", () => {
     expect(
       screen.getByRole("link", { name: /Voltar para o login/i })
     ).toBeInTheDocument();
+  });
+
+  it("Should update input values correctly", () => {
+    renderSignUpPage();
+
+    const nameInput = screen.getByPlaceholderText(/Nome/i);
+    const emailInput = screen.getByPlaceholderText(/E-mail/i);
+    const passwordInput = screen.getByPlaceholderText(/Senha/i);
+
+    fireEvent.change(nameInput, { target: { value: "Teste Gameplays" } });
+    fireEvent.change(emailInput, {
+      target: { value: "testegameplays@email.com" },
+    });
+    fireEvent.change(passwordInput, { target: { value: "senhaSegura123" } });
+
+    expect(nameInput.value).toBe("Teste Gameplays");
+    expect(emailInput.value).toBe("testegameplays@email.com");
+    expect(passwordInput.value).toBe("senhaSegura123");
   });
 });
