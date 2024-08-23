@@ -13,6 +13,7 @@ export function renderSignUpPage() {
 }
 
 let mockedAddAlert = vi.fn();
+let mockedNavigate = vi.fn();
 
 vi.mock("../../context/AlertContext/useAlerts.js", () => {
   return {
@@ -30,7 +31,7 @@ vi.mock("react-router-dom", async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...actual,
-    useNavigate: vi.fn(),
+    useNavigate: () => mockedNavigate,
     BrowserRouter: actual.BrowserRouter,
   };
 });
@@ -75,6 +76,34 @@ describe("SignUp page", () => {
     expect(nameInput.value).toBe("Teste Gameplays");
     expect(emailInput.value).toBe("testegameplays@email.com");
     expect(passwordInput.value).toBe("senhaSegura123");
+  });
+
+  it("Should call handleSignUp with correct data", () => {
+    renderSignUpPage();
+
+    const name = "Arthur Martins";
+    const email = "arthur@example.com";
+    const password = "senhaSegura123";
+
+    fireEvent.change(screen.getByPlaceholderText(/Nome/i), {
+      target: { value: name },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/E-mail/i), {
+      target: { value: email },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/Senha/i), {
+      target: { value: password },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Cadastrar/i }));
+
+    expect(handleSignUp).toHaveBeenCalledWith({
+      name: name,
+      email: email,
+      password: password,
+      addAlert: expect.any(Function),
+      navigate: expect.any(Function),
+    });
   });
 
   it("Should show an error alert when all fiels are empty", () => {
