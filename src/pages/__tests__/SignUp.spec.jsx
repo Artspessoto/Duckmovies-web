@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { App } from "../../containers/App";
 import { RouterWrapper } from "../../test-utils/RouterWrapper";
+import { handleSignUp } from "../../services/signUpService";
 
 export function renderSignUpPage() {
   return render(
@@ -11,16 +12,19 @@ export function renderSignUpPage() {
   );
 }
 
-vi.mock("../../services/signUpService.js", () => ({
-  handleSignUp: vi.fn(),
-}));
+let mockedAddAlert = vi.fn();
 
-vi.mock("../../context/AlertContext/useAlerts.js", () => ({
-  useAlerts: vi.fn().mockReturnValue({
-    alerts: [],
-    cleanAlerts: vi.fn(),
-  }),
-}));
+vi.mock("../../context/AlertContext/useAlerts.js", () => {
+  return {
+    useAlerts: vi.fn().mockReturnValue({
+      addAlert: (...args) => {
+        mockedAddAlert(...args);
+      },
+      alerts: [],
+      cleanAlerts: vi.fn(),
+    }),
+  };
+});
 
 vi.mock("react-router-dom", async (importOriginal) => {
   const actual = await importOriginal();
@@ -31,8 +35,13 @@ vi.mock("react-router-dom", async (importOriginal) => {
   };
 });
 
+vi.mock("../../services/signUpService", () => ({
+  handleSignUp: vi.fn(),
+}));
+
 describe("SignUp page", () => {
   beforeEach(() => {
+    vi.resetModules();
     vi.clearAllMocks();
   });
 
@@ -66,5 +75,20 @@ describe("SignUp page", () => {
     expect(nameInput.value).toBe("Teste Gameplays");
     expect(emailInput.value).toBe("testegameplays@email.com");
     expect(passwordInput.value).toBe("senhaSegura123");
+  });
+
+  it("Should show an error alert when all fiels are empty", () => {
+    renderSignUpPage();
+
+    handleSignUp.mockImplementation(({ addAlert }) => {
+      addAlert("error", "Preencha os campos obrigatórios!");
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Cadastrar/i }));
+
+    expect(mockedAddAlert).toHaveBeenCalledWith(
+      "error",
+      "Preencha os campos obrigatórios!"
+    );
   });
 });
