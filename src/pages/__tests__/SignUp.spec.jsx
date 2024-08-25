@@ -3,6 +3,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { App } from "../../containers/App";
 import { RouterWrapper } from "../../test-utils/RouterWrapper";
 import { handleSignUp } from "../../services/signUpService";
+import { api } from "../../services/api";
 
 export function renderSignUpPage() {
   return render(
@@ -82,7 +83,7 @@ describe("SignUp page", () => {
     renderSignUpPage();
 
     const name = "Arthur Martins";
-    const email = "arthur@example.com";
+    const email = "arthur@email.com";
     const password = "senhaSegura123";
 
     fireEvent.change(screen.getByPlaceholderText(/Nome/i), {
@@ -119,5 +120,83 @@ describe("SignUp page", () => {
       "error",
       "Preencha os campos obrigatórios!"
     );
+  });
+
+  it("Should show an error alert when name is less than 2 characters", () => {
+    renderSignUpPage();
+
+    handleSignUp.mockImplementation(({ addAlert }) => {
+      addAlert("error", "O nome deve conter pelo menos 2 caracteres");
+    });
+
+    fireEvent.change(screen.getByPlaceholderText(/Nome/i), {
+      target: { value: "A" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Cadastrar/i }));
+
+    expect(mockedAddAlert).toHaveBeenCalledWith(
+      "error",
+      "O nome deve conter pelo menos 2 caracteres"
+    );
+  });
+
+  it("Should show an error alert when email value is invalid format", () => {
+    renderSignUpPage();
+
+    handleSignUp.mockImplementation(({ addAlert }) => {
+      addAlert("error", "O formato do e-mail é inválido");
+    });
+
+    fireEvent.change(screen.getByPlaceholderText(/E-mail/i), {
+      target: { value: "invalid_email" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Cadastrar/i }));
+
+    expect(mockedAddAlert).toHaveBeenCalledWith(
+      "error",
+      "O formato do e-mail é inválido"
+    );
+  });
+
+  it("Should create an user with successful fields", () => {
+    renderSignUpPage();
+
+    const name = "Teste usuário";
+    const email = "teste@email.com";
+    const password = "senhaComplexa123";
+
+    handleSignUp.mockImplementation(({ addAlert, navigate }) => {
+      addAlert("success", "Usuário criado com sucesso!");
+      navigate("/");
+    });
+
+    fireEvent.change(screen.getByPlaceholderText(/Nome/i), {
+      target: { value: name },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/E-mail/i), {
+      target: { value: email },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/Senha/i), {
+      target: { value: password },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Cadastrar/i }));
+
+    expect(handleSignUp).toHaveBeenCalledWith({
+      name: name,
+      email: email,
+      password: password,
+      addAlert: expect.any(Function),
+      navigate: expect.any(Function),
+    });
+
+    expect(mockedAddAlert).toHaveBeenCalledWith(
+      "success",
+      "Usuário criado com sucesso!"
+    );
+
+    expect(mockedNavigate).toHaveBeenCalledWith("/");
   });
 });
