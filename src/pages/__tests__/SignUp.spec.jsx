@@ -141,6 +141,36 @@ describe("SignUp page", () => {
     );
   });
 
+  it("Should show an error with two alert messages when name and password is invalid", () => {
+    renderSignUpPage();
+
+    handleSignUp.mockImplementation(({ addAlert }) => {
+      addAlert("error", "O nome deve conter pelo menos 2 caracteres");
+      addAlert("error", "A senha deve conter pelo menos 6 caracteres");
+    });
+
+    fireEvent.change(screen.getByPlaceholderText(/Nome/i), {
+      target: { value: "A" },
+    });
+
+    fireEvent.change(screen.getByPlaceholderText(/Senha/i), {
+      target: { value: "teste" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Cadastrar/i }));
+
+    expect(mockedAddAlert).toHaveBeenCalledTimes(2);
+
+    expect(mockedAddAlert).toHaveBeenCalledWith(
+      "error",
+      "O nome deve conter pelo menos 2 caracteres"
+    );
+    expect(mockedAddAlert).toHaveBeenCalledWith(
+      "error",
+      "A senha deve conter pelo menos 6 caracteres"
+    );
+  });
+
   it("Should show an error alert when email value is invalid format", () => {
     renderSignUpPage();
 
