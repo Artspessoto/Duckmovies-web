@@ -32,6 +32,12 @@ vi.mock("react-router-dom", async (importOriginal) => {
   return {
     ...actual,
     useNavigate: () => mockedNavigate,
+    // eslint-disable-next-line react/prop-types
+    Link: ({ to, children }) => (
+      <a href={to} onClick={() => mockedNavigate(to)}>
+        {children}
+      </a>
+    ),
   };
 });
 
@@ -86,10 +92,37 @@ describe("SignIn page", () => {
     });
   });
 
-  // it("Should show an error when email or password is empty", () => {
-  //   const signInButton = screen.getByRole("button", { name: /Entrar/i });
-  //   fireEvent.click(signInButton);
+  it("Should show an error when email or password is empty", () => {
+    const signInButton = screen.getByRole("button", { name: /Entrar/i });
 
-  //   expect(mockedAddAlert).toHaveBeenCalledWith("error", "")
-  // })
+    mockedSignIn.mockImplementation(({ addAlert }) => {
+      addAlert(
+        "error",
+        "O formato do e-mail é inválido; O e-mail deve conter pelo menos 8 caracteres"
+      );
+      addAlert("error", "A senha deve conter pelo menos 6 caracteres");
+    });
+
+    fireEvent.click(signInButton);
+
+    expect(mockedAddAlert).toHaveBeenCalledTimes(2);
+    expect(mockedAddAlert).toHaveBeenCalledWith(
+      "error",
+      "O formato do e-mail é inválido; O e-mail deve conter pelo menos 8 caracteres"
+    );
+    expect(mockedAddAlert).toHaveBeenCalledWith(
+      "error",
+      "A senha deve conter pelo menos 6 caracteres"
+    );
+  });
+
+  it("Should navigate to sign up page when 'Criar conta' button is clicked", () => {
+    const signUpButton = screen.getByRole("button", { name: /Criar Conta/i });
+
+    expect(signUpButton).toBeInTheDocument();
+
+    fireEvent.click(signUpButton);
+
+    expect(mockedNavigate).toHaveBeenCalledWith("/register");
+  });
 });
