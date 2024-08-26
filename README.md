@@ -12,17 +12,21 @@ Duckmovies é uma aplicação para gerenciar anotações e classificações de f
 ![Tela de criação de filme 2](src/assets/images/createMovieScreen2.PNG)
 ![Tela de visualização do filme](src/assets/images/moviePreviewScreen.PNG)
 
+## Licença
+
+- Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENCE](./LICENSE) para detalhes.
+
 ## Tecnologias utilizadas:
 
-- React.js: Biblioteca para construir interfaces de usuário interativas.
-- Material UI: Biblioteca de componentes React para construir uma interface visualmente agradável e responsiva.
-- Zod: Biblioteca para validação de esquemas de dados.
+- **React.js**: Biblioteca para construir interfaces de usuário interativas.
+- **Material UI**: Biblioteca de componentes React para construir uma interface visualmente agradável e responsiva.
+- **Zod**: Biblioteca para validação de esquemas de dados.
 
 ## Funcionalidades:
 
-- Autenticação de usuários: Os usuários podem se registrar e fazer login na aplicação.
-- Criação e Visualização de Notas: Adicione e visualize notas sobre filmes com informações detalhadas e avaliações.
-  -Classificação de Filmes: Classifique filmes usando um sistema de estrelas.
+- **Autenticação de usuários**: Os usuários podem se registrar e fazer login na aplicação.
+- **Criação e Visualização de Notas**: Adicione e visualize notas sobre filmes com informações detalhadas e avaliações.
+  - **Classificação de Filmes**: Classifique filmes usando um sistema de estrelas.
 
 ## Documentação da API:
 
