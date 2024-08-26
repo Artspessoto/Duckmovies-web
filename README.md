@@ -21,6 +21,8 @@ Duckmovies é uma aplicação para gerenciar anotações e classificações de f
 - **React.js**: Biblioteca para construir interfaces de usuário interativas.
 - **Material UI**: Biblioteca de componentes React para construir uma interface visualmente agradável e responsiva.
 - **Zod**: Biblioteca para validação de esquemas de dados.
+- **Vitest**: Ferramenta de teste para realizar testes unitários e de integração.
+- **Testing Library**: Biblioteca para testar componentes React e simular interações com eles.
 
 ## Funcionalidades:
 
@@ -57,3 +59,17 @@ npm ci
 ```
 npm run dev
 ```
+
+## Testes
+
+Para rodar os testes do projeto, use o comando:
+
+```
+npm run test
+```
+
+## Links Úteis
+
+- [Repositório Backend](https://github.com/Artspessoto/Duckmovies-backend)
+- [Material UI Documentation](https://mui.com/)
+- [Zod Documentation](https://zod.dev/)
