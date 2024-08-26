@@ -10,6 +10,10 @@ export function AuthProvider({ children }) {
 
   async function signIn({ email, password, addAlert }) {
     try {
+      if (!email || !password) {
+        addAlert("error", "E-mail e/ou senha incorreta");
+        return;
+      }
       const response = await api.post("/sessions", { email, password });
       const { user, token } = response.data;
 
@@ -23,7 +27,7 @@ export function AuthProvider({ children }) {
 
       setData({ user, token });
     } catch (err) {
-      const apiResponse = err.response.data.message;
+      const apiResponse = err.response.data.message || "Erro inesperado. Tente novamente.";
       addAlert("error", apiResponse);
       return;
     }

@@ -47,11 +47,10 @@ describe("SignIn page", () => {
   beforeEach(() => {
     vi.resetModules();
     vi.clearAllMocks();
+    renderSignInPage();
   });
 
   it("Should be render SignIn form correctly", async () => {
-    renderSignInPage();
-
     expect(screen.getByPlaceholderText(/E-mail/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Senha/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Entrar/i })).toBeInTheDocument();
@@ -59,4 +58,38 @@ describe("SignIn page", () => {
       screen.getByRole("button", { name: /Criar conta/i })
     ).toBeInTheDocument();
   });
+
+  it("Should update input values correctly", () => {
+    const emailInput = screen.getByPlaceholderText(/E-mail/i);
+    const passwordInput = screen.getByPlaceholderText(/Senha/i);
+
+    fireEvent.change(emailInput, { target: { value: "teste@email.com" } });
+    fireEvent.change(passwordInput, { target: { value: "123456" } });
+
+    expect(emailInput.value).toBe("teste@email.com");
+    expect(passwordInput.value).toBe("123456");
+  });
+
+  it("Should call signIn with correct values when form is submitted", () => {
+    const emailInput = screen.getByPlaceholderText(/E-mail/i);
+    const passwordInput = screen.getByPlaceholderText(/Senha/i);
+    const signInButton = screen.getByRole("button", { name: /Entrar/i });
+
+    fireEvent.change(emailInput, { target: { value: "teste@email.com" } });
+    fireEvent.change(passwordInput, { target: { value: "123456" } });
+    fireEvent.click(signInButton);
+
+    expect(mockedSignIn).toHaveBeenCalledWith({
+      email: "teste@email.com",
+      password: "123456",
+      addAlert: expect.any(Function),
+    });
+  });
+
+  // it("Should show an error when email or password is empty", () => {
+  //   const signInButton = screen.getByRole("button", { name: /Entrar/i });
+  //   fireEvent.click(signInButton);
+
+  //   expect(mockedAddAlert).toHaveBeenCalledWith("error", "")
+  // })
 });
