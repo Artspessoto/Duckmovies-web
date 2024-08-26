@@ -1,6 +1,10 @@
-# Front-end Duckmovies ![Duckmovies](src/assets/icons/duckmoviesLogo.svg)
+# Front-end Duckmovies <img src="src/assets/icons/duckmoviesLogo.svg" alt="Duckmovies" width="35" />
 
 Duckmovies é uma aplicação para gerenciar anotações e classificações de filmes. Permite que os usuários autenticados criem e visualizem suas notas de filmes, e explorem uma interface moderna e intuitiva.
+
+## Telas da aplicação:
+![Tela de login](src/assets/images/loginScreen.PNG)
+![Tela de registro](src/assets/images/registerScreen.PNG)
 
 ## Tecnologias utilizadas:
 
@@ -13,6 +17,10 @@ Duckmovies é uma aplicação para gerenciar anotações e classificações de f
 - Autenticação de usuários: Os usuários podem se registrar e fazer login na aplicação.
 - Criação e Visualização de Notas: Adicione e visualize notas sobre filmes com informações detalhadas e avaliações.
   -Classificação de Filmes: Classifique filmes usando um sistema de estrelas.
+
+## Documentação da API:
+A aplicação interage com a API para gerenciar dados de filmes e notas. Para mais detalhes, consulte a [documentação da API](https://duckmovies-backend.onrender.com/api-docs/).
+
 
 ## Instalação
 
