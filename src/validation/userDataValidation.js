@@ -16,6 +16,11 @@ export const CreateUserPayload = z.object({
     .max(12, "A senha pode conter no máximo 12 caracteres"),
 });
 
+export const SignInPayload = CreateUserPayload.pick({
+  email: true,
+  password: true,
+});
+
 export const UpdateUserPayload = CreateUserPayload.pick({
   email: true,
   name: true,

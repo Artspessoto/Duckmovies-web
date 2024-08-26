@@ -1,6 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { UpdateUserPayload } from "../../validation/userDataValidation";
+import {
+  SignInPayload,
+  UpdateUserPayload,
+} from "../../validation/userDataValidation";
 import PropTypes from "prop-types";
 
 export const AuthContext = createContext({});
@@ -10,10 +13,29 @@ export function AuthProvider({ children }) {
 
   async function signIn({ email, password, addAlert }) {
     try {
-      if (!email || !password) {
-        addAlert("error", "E-mail e/ou senha incorreta");
+      const validationResult = SignInPayload.safeParse({ email, password });
+      if (!validationResult.success) {
+        const groupedErrors = {};
+
+        validationResult.error.errors.forEach((error) => {
+          const path = error.path[0];
+          const message = error.message;
+
+          if (groupedErrors[path]) {
+            groupedErrors[path].push(message);
+          } else {
+            groupedErrors[path] = [message];
+          }
+        });
+
+        Object.entries(groupedErrors).forEach(([, messages]) => {
+          const combinedMessage = messages.join("; ");
+          addAlert("error", combinedMessage);
+        });
+
         return;
       }
+
       const response = await api.post("/sessions", { email, password });
       const { user, token } = response.data;
 
@@ -27,7 +49,8 @@ export function AuthProvider({ children }) {
 
       setData({ user, token });
     } catch (err) {
-      const apiResponse = err.response.data.message || "Erro inesperado. Tente novamente.";
+      const apiResponse =
+        err.response.data.message || "Erro inesperado. Tente novamente.";
       addAlert("error", apiResponse);
       return;
     }

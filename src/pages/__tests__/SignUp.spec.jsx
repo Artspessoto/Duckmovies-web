@@ -3,7 +3,6 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { App } from "../../containers/App";
 import { RouterWrapper } from "../../test-utils/RouterWrapper";
 import { handleSignUp } from "../../services/signUpService";
-import { api } from "../../services/api";
 
 export function renderSignUpPage() {
   return render(
