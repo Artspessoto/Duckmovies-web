@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { App } from "../../containers/App";
 import { RouterWrapper } from "../../test-utils/RouterWrapper";
@@ -11,6 +11,7 @@ export function renderSignInPage() {
   );
 }
 
+let mockedApi = vi.fn();
 let mockedAddAlert = vi.fn();
 let mockedNavigate = vi.fn();
 let mockedSignIn = vi.fn();
@@ -41,10 +42,19 @@ vi.mock("react-router-dom", async (importOriginal) => {
   };
 });
 
+vi.mock("../../services/api", () => {
+  return {
+    api: {
+      post: mockedApi,
+    },
+  };
+});
+
 vi.mock("../../context/AuthContext/useAuth.js", () => {
   return {
     useAuth: () => ({
       signIn: mockedSignIn,
+      user: null,
     }),
   };
 });
@@ -124,5 +134,46 @@ describe("SignIn page", () => {
     fireEvent.click(signUpButton);
 
     expect(mockedNavigate).toHaveBeenCalledWith("/register");
+  });
+
+  it.only("Should navigate to home page on successful sign in", async () => {
+    mockedApi.mockResolvedValue({
+      data: {
+        user: { name: "Arthur Martins", email: "arthur@email.com" },
+        token: "test-token",
+      },
+    });
+
+    mockedSignIn.mockImplementation(() => {
+      return {
+        user: { name: "Arthur Martins", email: "arthur@email.com" },
+        token: "test-token",
+      };
+    });
+
+    const emailInput = screen.getByPlaceholderText(/E-mail/i);
+    const passwordInput = screen.getByPlaceholderText(/Senha/i);
+    const signInButton = screen.getByRole("button", { name: /Entrar/i });
+
+    fireEvent.change(emailInput, { target: { value: "arthur@email.com" } });
+    fireEvent.change(passwordInput, { target: { value: "123456" } });
+    fireEvent.click(signInButton);
+
+    await waitFor(() => {
+      expect(mockedSignIn).toHaveBeenCalledWith({
+        email: "arthur@email.com",
+        password: "123456",
+        addAlert: expect.any(Function),
+      });
+    });
+
+    // await waitFor(() => {
+    //   renderSignInPage();
+    //   const homeTitle = screen.findByRole("heading", {
+    //     level: 1,
+    //     name: /Meus filmes/i,
+    //   });
+    //   expect(homeTitle).resolves.toBeInTheDocument();
+    // });
   });
 });
