@@ -1,4 +1,3 @@
-// import { BrowserRouter } from "react-router-dom";
 import { useAuth } from "../context/AuthContext/useAuth";
 
 import { AppRoutes } from "./app.routes";

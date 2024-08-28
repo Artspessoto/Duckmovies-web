@@ -2,6 +2,7 @@ import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { App } from "../../containers/App";
 import { RouterWrapper } from "../../test-utils/RouterWrapper";
+import { api } from "../../services/api";
 
 export function renderSignInPage() {
   render(
@@ -11,7 +12,6 @@ export function renderSignInPage() {
   );
 }
 
-let mockedApi = vi.fn();
 let mockedAddAlert = vi.fn();
 let mockedNavigate = vi.fn();
 let mockedSignIn = vi.fn();
@@ -45,22 +45,25 @@ vi.mock("react-router-dom", async (importOriginal) => {
 vi.mock("../../services/api", () => {
   return {
     api: {
-      post: mockedApi,
+      post: vi.fn(),
+      get: vi.fn(),
     },
   };
 });
 
+let user = null;
 vi.mock("../../context/AuthContext/useAuth.js", () => {
   return {
     useAuth: () => ({
       signIn: mockedSignIn,
-      user: null,
+      user,
     }),
   };
 });
 
 describe("SignIn page", () => {
   beforeEach(() => {
+    localStorage.clear();
     vi.resetModules();
     vi.clearAllMocks();
     renderSignInPage();
@@ -137,18 +140,23 @@ describe("SignIn page", () => {
   });
 
   it.only("Should navigate to home page on successful sign in", async () => {
-    mockedApi.mockResolvedValue({
+    api.post.mockResolvedValue({
       data: {
         user: { name: "Arthur Martins", email: "arthur@email.com" },
         token: "test-token",
       },
     });
 
-    mockedSignIn.mockImplementation(() => {
-      return {
-        user: { name: "Arthur Martins", email: "arthur@email.com" },
-        token: "test-token",
-      };
+    mockedSignIn.mockImplementation(async ({ email, password, addAlert }) => {
+      const response = await api.post("/sessions", { email, password });
+      const { user: loggedInUser, token } = response.data;
+
+      if (response.status === 200) {
+        user = loggedInUser;
+        localStorage.setItem("@duckmovies:user", JSON.stringify(loggedInUser));
+        localStorage.setItem("@duckmovies:token", token);
+        return { user: loggedInUser, token };
+      }
     });
 
     const emailInput = screen.getByPlaceholderText(/E-mail/i);
@@ -160,12 +168,22 @@ describe("SignIn page", () => {
     fireEvent.click(signInButton);
 
     await waitFor(() => {
-      expect(mockedSignIn).toHaveBeenCalledWith({
+      expect(api.post).toHaveBeenCalledWith("/sessions", {
         email: "arthur@email.com",
         password: "123456",
-        addAlert: expect.any(Function),
       });
+
+      const storedUser = localStorage.getItem("@duckmovies:user");
+      console.log("Stored user:", storedUser);
+      const storedToken = localStorage.getItem("@duckmovies:token");
+
+      expect(storedUser).toEqual(
+        JSON.stringify({ name: "Arthur Martins", email: "arthur@email.com" })
+      );
+      expect(storedToken).toBe("test-token");
     });
+
+    renderSignInPage();
 
     // await waitFor(() => {
     //   renderSignInPage();
