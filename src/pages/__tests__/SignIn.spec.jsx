@@ -15,6 +15,7 @@ export function renderSignInPage() {
 let mockedAddAlert = vi.fn();
 let mockedNavigate = vi.fn();
 let mockedSignIn = vi.fn();
+let mockUser = null;
 
 vi.mock("../../context/AlertContext/useAlerts.js", () => {
   return {
@@ -51,13 +52,14 @@ vi.mock("../../services/api", () => {
   };
 });
 
-let user = null;
 vi.mock("../../context/AuthContext/useAuth.js", () => {
   return {
-    useAuth: () => ({
-      signIn: mockedSignIn,
-      user,
-    }),
+    useAuth: () => {
+      return {
+        signIn: mockedSignIn,
+        user: mockUser,
+      };
+    },
   };
 });
 
@@ -139,7 +141,7 @@ describe("SignIn page", () => {
     expect(mockedNavigate).toHaveBeenCalledWith("/register");
   });
 
-  it.only("Should navigate to home page on successful sign in", async () => {
+  it("Should navigate to home page on successful sign in", async () => {
     api.post.mockResolvedValue({
       data: {
         user: { name: "Arthur Martins", email: "arthur@email.com" },
@@ -147,16 +149,17 @@ describe("SignIn page", () => {
       },
     });
 
-    mockedSignIn.mockImplementation(async ({ email, password, addAlert }) => {
+    mockedSignIn.mockImplementation(async ({ email, password }) => {
       const response = await api.post("/sessions", { email, password });
-      const { user: loggedInUser, token } = response.data;
+      const { user, token } = response.data;
 
-      if (response.status === 200) {
-        user = loggedInUser;
-        localStorage.setItem("@duckmovies:user", JSON.stringify(loggedInUser));
-        localStorage.setItem("@duckmovies:token", token);
-        return { user: loggedInUser, token };
-      }
+      localStorage.setItem("@duckmovies:user", JSON.stringify(user));
+      localStorage.setItem("@duckmovies:token", token);
+
+      api.defaults.headers.authorization = `Bearer ${token}`;
+
+      mockUser = { name: "Arthur Martins", email: "arthur@email.com" };
+      return { user, token };
     });
 
     const emailInput = screen.getByPlaceholderText(/E-mail/i);
@@ -174,24 +177,12 @@ describe("SignIn page", () => {
       });
 
       const storedUser = localStorage.getItem("@duckmovies:user");
-      console.log("Stored user:", storedUser);
       const storedToken = localStorage.getItem("@duckmovies:token");
 
-      expect(storedUser).toEqual(
+      expect(storedUser).toBe(
         JSON.stringify({ name: "Arthur Martins", email: "arthur@email.com" })
       );
       expect(storedToken).toBe("test-token");
     });
-
-    renderSignInPage();
-
-    // await waitFor(() => {
-    //   renderSignInPage();
-    //   const homeTitle = screen.findByRole("heading", {
-    //     level: 1,
-    //     name: /Meus filmes/i,
-    //   });
-    //   expect(homeTitle).resolves.toBeInTheDocument();
-    // });
   });
 });
