@@ -2,15 +2,24 @@
 
 Duckmovies é uma aplicação para gerenciar anotações e classificações de filmes. Permite que os usuários autenticados criem e visualizem suas notas de filmes, e explorem uma interface moderna e intuitiva.
 
-## Telas da aplicação:
+## Deploy da aplicação
+A aplicação Duckmovies está disponível online e pode ser acessada através do seguinte link:
+- [Duckmovies - Acesse a aplicação](https://duckmovies.netlify.app/)
 
-![Tela de login](src/assets/images/loginScreen.PNG)
-![Tela de registro](src/assets/images/registerScreen.PNG)
-![Tela homePage](src/assets/images/homeScreen.PNG)
-![Tela de perfil](src/assets/images/profileScreen.PNG)
-![Tela de criação de filme 1](src/assets/images/createMovieScreen1.PNG)
-![Tela de criação de filme 2](src/assets/images/createMovieScreen2.PNG)
-![Tela de visualização do filme](src/assets/images/moviePreviewScreen.PNG)
+## Telas da aplicação
+Abaixo estão algumas capturas de tela das principais páginas da aplicação Duckmovies:
+
+| Login         | Registro         | Home        |
+|-----------------------|--------------------------|------------------------|
+| ![Tela de login](src/assets/images/loginScreen.PNG)  | ![Tela de registro](src/assets/images/registerScreen.PNG) | ![Tela Home](src/assets/images/homeScreen.PNG) |
+
+| Perfil         | Criação de Filme 1       | Criação de Filme 2      |
+|-----------------------|--------------------------|------------------------|
+| ![Tela de perfil](src/assets/images/profileScreen.PNG)  | ![Criação de Filme 1](src/assets/images/createMovieScreen1.PNG) | ![Criação de Filme 2](src/assets/images/createMovieScreen2.PNG) |
+
+| Visualização do Filme |
+|-----------------------|
+| ![Tela de visualização do filme](src/assets/images/moviePreviewScreen.PNG) |
 
 ## Licença
 
@@ -26,9 +35,9 @@ Duckmovies é uma aplicação para gerenciar anotações e classificações de f
 
 ## Funcionalidades:
 
-- **Autenticação de usuários**: Os usuários podem se registrar e fazer login na aplicação.
-- **Criação e Visualização de Notas**: Adicione e visualize notas sobre filmes com informações detalhadas e avaliações.
-- **Classificação de Filmes**: Classifique filmes usando um sistema de estrelas.
+- **Autenticação de Usuários**: Registre-se e faça login para acessar e gerenciar suas notas de filmes de forma segura.
+- **Criação e Visualização de Notas**: Adicione anotações detalhadas sobre filmes, incluindo avaliações e tags personalizadas, e visualize suas notas em uma interface organizada.
+- **Classificação de Filmes**: Avalie filmes utilizando um sistema de classificação por estrelas para expressar suas opiniões de maneira intuitiva.
 
 ## Documentação da API:
 
