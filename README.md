@@ -6,6 +6,10 @@ Duckmovies é uma aplicação para gerenciar anotações e classificações de f
 A aplicação Duckmovies está disponível online e pode ser acessada através do seguinte link:
 - [Duckmovies - Acesse a aplicação](https://duckmovies.netlify.app/)
 
+
+https://github.com/user-attachments/assets/574cd24e-99f7-4687-bc5d-cdab5c86de33
+
+
 ## Telas da aplicação
 Abaixo estão algumas capturas de tela das principais páginas da aplicação Duckmovies:
 
